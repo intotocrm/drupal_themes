@@ -1,0 +1,55 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 12/05/2015, 15:57:02
+    Author     : Roi
+*/
+@import "./variables.less";
+
+.crm-container .panel
+{
+    .zero_all_settings;
+    &:extend(.panel);
+    display:block;
+}
+
+.crm-container .panel-primary
+{
+    &:extend(.panel-primary);
+}
+.crm-container .panel-primary > .panel-heading
+{
+    &:extend(.panel-primary>.panel-heading);
+}
+
+.crm-container .panel-primary > .panel-heading h3
+{
+    color:inherit;
+}
+.crm-container .panel-default
+{
+    &:extend(.panel-default);
+}
+
+
+.panel-heading 
+{
+    div
+    {
+	display:inline-block;
+	padding-right:10px;
+    }
+}
+
+.panel-body 
+{
+    div
+    {
+	display:inline-block;
+	padding-right:10px;
+    }
+}
+

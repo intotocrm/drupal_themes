@@ -1,0 +1,85 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 07/05/2015, 10:51:48
+    Author     : Roi
+*/
+
+@import "./bootstrap_base/less/variables.less";
+@import "./variables.less";
+/*
+.tb-megamenu
+{
+    background: inherit;
+    color: inherit;
+    .nav > li > a
+    {
+	color:inherit;
+    }
+    
+    .nav > .active > a,
+    .nav > .active > a:hover,
+    .nav > .active > a:focus
+    {
+	background-color:@gray;
+    }
+}*/
+
+
+
+
+
+//some fixes for the vertical tb megamenu which is inside the sidebar:
+.region-sidebar-first
+{
+    /*Fix the width to ensure the next item jump to below */
+    .tb-megamenu {
+	width: 100%;
+	margin:0;
+    }
+    /*Fix the width to ensure the next item jump to below */
+    .tb-megamenu-item {
+	width: 100%;
+    }
+
+
+    /*Moving the Sub Menu position*/
+    .tb-megamenu .dropdown-menu {
+	width: 150px;
+	margin-left: 150px;
+	margin-top: -50px;
+    }
+}
+
+
+.tb-megamenu
+{
+    &:extend(.navbar-default);
+}
+
+/*
+.block-tb-megamenu .nav-collapse
+{
+    &:extend(.sidebar-nav);
+}*/
+
+/*
+.block-tb-megamenu .nav-collapse li 
+{
+    &:extend(.sidebar ul li);
+}
+*/
+
+.block-tb-megamenu .nav-collapse li a{
+    &:extend(.nav>li>a );
+    .menu-fonts;
+}
+
+.block-tb-megamenu .nav-collapse li a:hover
+{
+    &:extend(.nav>li>a:hover);
+    .menu-fonts;
+}

@@ -1,0 +1,124 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 05/05/2015, 11:57:54
+    Author     : Roi
+*/
+
+
+@import "./variables.less";
+@civicrm_css_base : "../../../modules/civicrm";
+
+
+body.non-admin-user
+{
+    #civicrm-menu{
+	display:none;
+    }
+}
+
+
+
+.crm-container  input.crm-form-text,
+.crm-container  input.form-text,
+//.crm-form-select,
+.select2-container .select2-choice,
+#civicrm-menu input
+{
+    .zero_all_settings;
+    &:extend(.form-control);
+    
+    //overriding the inheritance from bootstrap theme, because it doesn't always fit for civicrm
+}
+
+
+
+.crm-container {
+    
+    a.button,
+    a.crm-invoiceButton,
+    a.crm-invoiceButton:link,
+    a.crm-invoiceButton:visited,
+    a.button:link,
+    a.button:visited,
+    input.crm-form-submit,
+    .ui-dialog-buttonset .ui-button,
+    input[type=button],
+    .crm-button
+    {
+	height:initial;
+	width:initial;
+	background:none;
+	background-image: none;
+	text-shadow: none;
+	&:extend(.btn, .btn-default);
+    }
+    .crm-button-icon,
+    .button .icon,
+    a.invoiceButton .icon,
+    .crm-button .icon
+    //,.crm-accordion-header .icon
+    {
+	background-image: url("@{civicrm_css_base}/i/icons/jquery-ui-3E3E3E.png"); //this is because buttons are extending .btn-default which is white.
+    }
+    
+    
+    
+    ////////tabs
+    .crm-contact-tabs-list
+    {
+	.zero_all_settings;
+	display:block;
+	&:extend(.nav, .nav-tabs);
+	padding-bottom: 0px !important;
+    }
+    
+    .crm-contact-tabs-list>li 
+    {
+	.zero_all_settings;
+	&:extend(.nav>li, .nav-tabs>li);
+	margin-bottom: -1px !important;
+    }
+    
+    .crm-contact-tabs-list li a
+    {
+	&:extend(.nav-tabs>li>a, .nav>li>a);
+    }
+    
+    .crm-contact-tabs-list li.ui-tabs-active a,
+    .crm-contact-tabs-list li.ui-state-active a,
+    .crm-contact-tabs-list li a:hover,
+    .crm-contact-tabs-list li a:focus
+    {
+	&:extend(.nav-tabs>li.active>a, .nav>li>a);
+    }
+    
+    .ui-tabs
+    {
+	border:none;
+	padding:none;
+    }
+    
+    
+    //tags
+    h3
+    {
+	.zero_all_settings;
+    }
+}
+
+
+#crm-container div.crm-summary-display_name
+{
+    padding-bottom: 0px;
+}
+
+#crm-container div.crm-summary-contactname-block
+{
+    // here we have a problem in the original civicrm theme that we need to fix:
+    margin-top:0px;
+    padding-bottom:0px;
+}
