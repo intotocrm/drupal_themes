@@ -74,7 +74,7 @@
  */
 ?>
 <header id="navbar" role="banner" class="<?php print $navbar_classes; ?>">
-  <div class="container">
+<!--  <div class="container"> -->
     <div class="navbar-header">
       <?php if ($logo): ?>
       <a class="logo navbar-btn pull-left" href="<?php print $front_page; ?>" title="<?php print t('Home'); ?>">
@@ -108,12 +108,35 @@
             <?php print render($page['navigation']); ?>
           <?php endif; ?>
         </nav>
+		  
+		  
+	<div class="navbar-default sidebar" role="navigation">
+
+		<?php if (!empty($page['sidebar_first'])): ?>
+		<div class="sidebar-nav navbar-collapse">  <!--  <aside class="col-sm-3" role="complementary"> -->
+
+			<?php print render($page['sidebar_first']); ?>
+		</div> <!--  </aside>  <!-- /#sidebar-first -->  
+		<?php endif; ?>
+
+
+	</div>	
+
+		  
+		  
       </div>
     <?php endif; ?>
-  </div>
+	  
+	  
+	
+	  
+<!--  </div>  -->
+	
+	
+	
 </header>
 
-<div class="main-container container">
+<div id="page-wrapper">
 
   <header role="banner" id="page-header">
     <?php if (!empty($site_slogan)): ?>
@@ -125,11 +148,9 @@
 
   <div class="row">
 
-    <?php if (!empty($page['sidebar_first'])): ?>
-      <aside class="col-sm-3" role="complementary">
-        <?php print render($page['sidebar_first']); ?>
-      </aside>  <!-- /#sidebar-first -->
-    <?php endif; ?>
+	  
+	  
+<!--here was sidebar-first-->
 
     <section<?php print $content_column_class; ?>>
       <?php if (!empty($page['highlighted'])): ?>

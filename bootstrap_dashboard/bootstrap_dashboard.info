@@ -39,3 +39,4 @@ regions[footer]         = 'Footer'
 regions[page_top]       = 'Page top'
 regions[page_bottom]    = 'Page bottom'
 
+settings[bootstrap_navbar_position] = 'navbar-fixed-top'
