@@ -104,38 +104,21 @@ To change this template file, choose Tools | Templates
 and open the template in the editor.
 */
 /* 
-    Created on : 12/05/2015, 15:57:02
+    Created on : 23/07/2015, 17:31:16
     Author     : Roi
 */
-.crm-container .panel {
-  position: initial;
-  display: initial;
-  width: initial;
-  height: initial;
-  padding: initial;
-  margin: initial;
-  font-size: initial;
-  line-height: initial;
-  color: initial;
-  background-color: initial;
-  background-image: initial;
-  border: initial;
-  border-radius: initial;
-  background: initial;
-  -moz-box-sizing: border-box;
-  box-sizing: border-box;
-  display: block;
+.panel-heading {
+  text-align: center;
 }
-.crm-container .panel-primary > .panel-heading h3 {
-  color: inherit;
+.panel-heading h2 {
+  font-size: 24px;
 }
-.panel-heading div {
-  display: inline-block;
-  padding-right: 10px;
+.panel-heading img {
+  border: 4px solid #FFFFFF;
+  border-radius: 50%;
 }
-.panel-body div {
-  display: inline-block;
-  padding-right: 10px;
+.top-buffer {
+  margin-top: 20px;
 }
 /*!
  * Bootstrap v3.3.5 (http://getbootstrap.com)
@@ -5605,8 +5588,7 @@ button.list-group-item-danger.active:focus {
   margin-bottom: 0;
   line-height: 1.3;
 }
-.panel,
-.crm-container .panel {
+.panel {
   margin-bottom: 20px;
   background-color: #ffffff;
   border: 1px solid transparent;
@@ -5841,8 +5823,7 @@ button.list-group-item-danger.active:focus {
 .panel-group .panel-footer + .panel-collapse .panel-body {
   border-bottom: 1px solid #dddddd;
 }
-.panel-default,
-.crm-container .panel-default {
+.panel-default {
   border-color: #dddddd;
 }
 .panel-default > .panel-heading {
@@ -5860,12 +5841,10 @@ button.list-group-item-danger.active:focus {
 .panel-default > .panel-footer + .panel-collapse > .panel-body {
   border-bottom-color: #dddddd;
 }
-.panel-primary,
-.crm-container .panel-primary {
+.panel-primary {
   border-color: #337ab7;
 }
-.panel-primary > .panel-heading,
-.crm-container .panel-primary > .panel-heading {
+.panel-primary > .panel-heading {
   color: #ffffff;
   background-color: #337ab7;
   border-color: #337ab7;
@@ -6935,4 +6914,7 @@ and open the template in the editor.
 body.navbar-is-fixed-top {
   padding-top: 51px!important;
   /*override the override*/
+}
+.logo img {
+  max-height: 35px;
 }

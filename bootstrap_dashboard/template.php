@@ -112,7 +112,11 @@ function bootstrap_dashboard_preprocess_html(&$variables) {
 //}
 
 
-function bootstrap_dashboard_preprocess_page(&$variables) {
+function bootstrap_dashboard_preprocess_page(&$variables)
+{
+	//file_save_data(print_r(array_keys($variables), true), 'public://vars_file');
+	//
+	//bible: https://www.drupal.org/node/933976
 	
 	$variables['content_column_class'] = ' class="col-sm-12"'; //not as planned in bootstrap while there might be sidebar-first and sidebr-second each of which 
 																// take 3 columns out of the 12 but it's more suitable with this hacked theme
@@ -131,7 +135,7 @@ function bootstrap_dashboard_preprocess_page(&$variables) {
 		print "error in theme: please unset bootstrap_region_well-sidebar_first<br>";
 	}
 	
-	
+	$variables['header_content'] = 'header content place holder';
 }
 
 
@@ -157,7 +161,7 @@ function bootstrap_dashboard_preprocess_field(&$variables, $hook) {
  */
 function bootstrap_dashboard_preprocess_entity(&$variables, $hook)
 {
-	watchdog("bootstrap_dashboard", "preprocess_entity". '_' . $variables['entity_type']);	
+//	watchdog("bootstrap_dashboard", "preprocess_entity". '_' . $variables['entity_type']);	
 
 	$function = __FUNCTION__ . '_' . $variables['entity_type'];
 	if (function_exists ($function)) {
@@ -169,17 +173,36 @@ function bootstrap_dashboard_preprocess_entity_crm_core_contact(&$variables, $ho
 //	file_save_data(print_r($variables['content']['field_instant_messaging_collecti'], true), 'public://vars_file');
 //	watchdog("bootstrap_dashboard", "preprocess_contact:" . print_r($variables, true));	
 	foreach (array('field_instant_messaging_collecti', 'field_phone', 'field_address') as $field)
-	if (empty($variables['content'][$field]['#items']))
-		$variables['content'][$field]['#access'] = 0;
+		if (empty($variables['content'][$field]['#items']))
+			$variables['content'][$field]['#access'] = 0;
 //	print "<pre>" . print_r(array_key($variables), true). "</pre>";	
 //  if ($variables['uid'] != 1) {
 //    // You can call this variable any way you want, just put it into $variables['element'] and set as TRUE.
 //    $variables['element']['hide_admin_field_group'] = TRUE;
 //  }
+//	drupal_add_region_content('contactheader', array('#type' => 'markup','#markup'=>'*******************************'));
 }
 
-function bootstrap_dashboard_field_group_build_pre_render_alter(&$element) {
-	watchdog("bootstrap_dashboard", "AAA");	
+//function bootstrap_dashboard_preprocess_region(&$variables) {
+//	//print ("<pre>" . print_r($variables, true) . "</pre>");
+//	file_save_data(print_r($variables, true), 'public://vars_file_new');
+// // Create the $content variable that templates expect.
+////  $variables ['content'] = $variables ['elements']['#children'];
+////  $variables ['region'] = $variables ['elements']['#region'];
+////
+////  $variables ['classes_array'][] = drupal_region_class($variables ['region']);
+////  $variables ['theme_hook_suggestions'][] = 'region__' . $variables ['region'];
+//  
+//  
+// // $menu_object = menu_get_object();
+////  if (isset($menu_object->type) && $vars['region'] == 'content') {
+////    $vars['theme_hook_suggestions'][] = 'region__content__'.$menu_object->type;
+////    $vars['attributes_array']['class'][] = 'region-content-'.$menu_object->type;
+////  }
+//}
+
+function bootstrap_dashboard_field_group_build_pre_render_alter(&$element)
+{
 //  if (isset($element['hide_admin_field_group']) && isset($element['hide_admin_field_group'])) {
 //    $element['hide_admin_field_group']['#access'] = FALSE;
 //  }

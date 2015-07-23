@@ -10,49 +10,49 @@
  *
  * General utility variables:
  * - $base_path: The base URL path of the Drupal installation. At the very
- *   least, this will always default to /.
+ *	 least, this will always default to /.
  * - $directory: The directory the template is located in, e.g. modules/system
- *   or themes/bartik.
+ *	 or themes/bartik.
  * - $is_front: TRUE if the current page is the front page.
  * - $logged_in: TRUE if the user is registered and signed in.
  * - $is_admin: TRUE if the user has permission to access administration pages.
  *
  * Site identity:
  * - $front_page: The URL of the front page. Use this instead of $base_path,
- *   when linking to the front page. This includes the language domain or
- *   prefix.
+ *	 when linking to the front page. This includes the language domain or
+ *	 prefix.
  * - $logo: The path to the logo image, as defined in theme configuration.
  * - $site_name: The name of the site, empty when display has been disabled
- *   in theme settings.
+ *	 in theme settings.
  * - $site_slogan: The slogan of the site, empty when display has been disabled
- *   in theme settings.
+ *	 in theme settings.
  *
  * Navigation:
  * - $main_menu (array): An array containing the Main menu links for the
- *   site, if they have been configured.
+ *	 site, if they have been configured.
  * - $secondary_menu (array): An array containing the Secondary menu links for
- *   the site, if they have been configured.
+ *	 the site, if they have been configured.
  * - $breadcrumb: The breadcrumb trail for the current page.
  *
  * Page content (in order of occurrence in the default page.tpl.php):
  * - $title_prefix (array): An array containing additional output populated by
- *   modules, intended to be displayed in front of the main title tag that
- *   appears in the template.
+ *	 modules, intended to be displayed in front of the main title tag that
+ *	 appears in the template.
  * - $title: The page title, for use in the actual HTML content.
  * - $title_suffix (array): An array containing additional output populated by
- *   modules, intended to be displayed after the main title tag that appears in
- *   the template.
+ *	 modules, intended to be displayed after the main title tag that appears in
+ *	 the template.
  * - $messages: HTML for status and error messages. Should be displayed
- *   prominently.
+ *	 prominently.
  * - $tabs (array): Tabs linking to any sub-pages beneath the current page
- *   (e.g., the view and edit tabs when displaying a node).
+ *	 (e.g., the view and edit tabs when displaying a node).
  * - $action_links (array): Actions local to the page, such as 'Add menu' on the
- *   menu administration interface.
+ *	 menu administration interface.
  * - $feed_icons: A string of all feed icons for the current page.
  * - $node: The node object, if there is an automatically-loaded node
- *   associated with the page, and the node ID is the second argument
- *   in the page's path (e.g. node/12345 and node/12345/revisions, but not
- *   comment/reply/12345).
+ *	 associated with the page, and the node ID is the second argument
+ *	 in the page's path (e.g. node/12345 and node/12345/revisions, but not
+ *	 comment/reply/12345).
  *
  * Regions:
  * - $page['help']: Dynamic help text, mostly for admin pages.
@@ -74,63 +74,64 @@
  */
 ?>
 <header id="navbar" role="banner" class="<?php print $navbar_classes; ?>">
-<!--  <div class="container"> -->
-    <div class="navbar-header">
-      <?php if ($logo): ?>
-      <a class="logo navbar-btn pull-left" href="<?php print $front_page; ?>" title="<?php print t('Home'); ?>">
-        <img src="<?php print $logo; ?>" alt="<?php print t('Home'); ?>" />
-      </a>
-      <?php endif; ?>
+<!--	<div class="container"> -->
+	<div class="navbar-header">
+		<?php if ($logo): ?>
+		<a class="logo navbar-btn pull-left" href="<?php print $front_page; ?>" title="<?php print t('Home'); ?>">
+		<img src="<?php print $logo; ?>" alt="<?php print t('Home'); ?>" />
+		</a>
+		<?php endif; ?>
 
-      <?php if (!empty($site_name)): ?>
-      <a class="name navbar-brand" href="<?php print $front_page; ?>" title="<?php print t('Home'); ?>"><?php print $site_name; ?></a>
-      <?php endif; ?>
+		<?php if (!empty($site_name)): ?>
+		<a class="name navbar-brand" href="<?php print $front_page; ?>" title="<?php print t('Home'); ?>"><?php print $site_name; ?></a>
+		<?php endif; ?>
 
-      <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
-      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-    </div>
+		<!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+		<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+		<span class="sr-only">Toggle navigation</span>
+		<span class="icon-bar"></span>
+		<span class="icon-bar"></span>
+		<span class="icon-bar"></span>
+		</button>
+	</div>
 
-    <?php if (!empty($primary_nav) || !empty($secondary_nav) || !empty($page['navigation'])): ?>
-      <div class="navbar-collapse collapse">
-        <nav role="navigation">
-          <?php if (!empty($primary_nav)): ?>
-            <?php print render($primary_nav); ?>
-          <?php endif; ?>
-          <?php if (!empty($secondary_nav)): ?>
-            <?php print render($secondary_nav); ?>
-          <?php endif; ?>
-          <?php if (!empty($page['navigation'])): ?>
-            <?php print render($page['navigation']); ?>
-          <?php endif; ?>
-        </nav>
-		  
-		  
+	<?php if (!empty($primary_nav) || !empty($secondary_nav) || !empty($page['navigation'])): ?>
+		<div class="navbar-collapse collapse">
+		<nav role="navigation">
+			<?php //comment out because no primary nav needed with tb mega
+			//if (!empty($primary_nav)): ?>
+			<?php //print render($primary_nav); ?>
+			<?php //endif; ?>
+			<?php if (!empty($secondary_nav)): ?>
+			<?php print render($secondary_nav); ?>
+			<?php endif; ?>
+			<?php if (!empty($page['navigation'])): ?>
+			<?php print render($page['navigation']); ?>
+			<?php endif; ?>
+		</nav>
+			
+			
 	<div class="navbar-default sidebar" role="navigation">
 
 		<?php if (!empty($page['sidebar_first'])): ?>
-		<div class="sidebar-nav navbar-collapse">  <!--  <aside class="col-sm-3" role="complementary"> -->
+		<div class="sidebar-nav navbar-collapse">	<!--	<aside class="col-sm-3" role="complementary"> -->
 
 			<?php print render($page['sidebar_first']); ?>
-		</div> <!--  </aside>  <!-- /#sidebar-first -->  
+		</div> <!--	</aside>	<!-- /#sidebar-first -->	
 		<?php endif; ?>
 
 
 	</div>	
 
-		  
-		  
-      </div>
-    <?php endif; ?>
-	  
-	  
+			
+			
+		</div>
+	<?php endif; ?>
+		
+		
 	
-	  
-<!--  </div>  -->
+		
+<!--	</div>	-->
 	
 	
 	
@@ -138,52 +139,57 @@
 
 <div id="page-wrapper">
 
-  <header role="banner" id="page-header">
-    <?php if (!empty($site_slogan)): ?>
-      <p class="lead"><?php print $site_slogan; ?></p>
-    <?php endif; ?>
+	<header role="banner" id="page-header">
+	<?php if (!empty($site_slogan)): ?>
+		<p class="lead"><?php print $site_slogan; ?></p>
+	<?php endif; ?>
 
-    <?php print render($page['header']); ?>
-  </header> <!-- /#page-header -->
+	<?php print render($page['header']); ?>
+	</header> <!-- /#page-header -->
 
-  <div class="row">
+	<div class="row">
 
-	  
-	  
+		
+		
 <!--here was sidebar-first-->
 
-    <section<?php print $content_column_class; ?>>
-      <?php if (!empty($page['highlighted'])): ?>
-        <div class="highlighted jumbotron"><?php print render($page['highlighted']); ?></div>
-      <?php endif; ?>
-      <?php if (!empty($breadcrumb)): print $breadcrumb; endif;?>
-      <a id="main-content"></a>
-      <?php print render($title_prefix); ?>
-      <?php if (!empty($title)): ?>
-        <h1 class="page-header"><?php print $title; ?></h1>
-      <?php endif; ?>
-      <?php print render($title_suffix); ?>
-      <?php print $messages; ?>
-      <?php if (!empty($tabs)): ?>
-        <?php print render($tabs); ?>
-      <?php endif; ?>
-      <?php if (!empty($page['help'])): ?>
-        <?php print render($page['help']); ?>
-      <?php endif; ?>
-      <?php if (!empty($action_links)): ?>
-        <ul class="action-links"><?php print render($action_links); ?></ul>
-      <?php endif; ?>
-      <?php print render($page['content']); ?>
-    </section>
+	<section<?php print $content_column_class; ?>>
+		<?php if (!empty($page['highlighted'])): ?>
+		<div class="highlighted jumbotron"><?php print render($page['highlighted']); ?></div>
+		<?php endif; ?>
+		<?php if (!empty($breadcrumb)): print $breadcrumb; endif;?>
+		<a id="main-content"></a>
+		<?php if ($contact_renderable){?>
+			<?php print render($contact_renderable); ?>
+		<?php } else { ?>
 
-    <?php if (!empty($page['sidebar_second'])): ?>
-      <aside class="col-sm-3" role="complementary">
-        <?php print render($page['sidebar_second']); ?>
-      </aside>  <!-- /#sidebar-second -->
-    <?php endif; ?>
+			<?php print render($title_prefix); ?>
+			<?php if (!empty($title)): ?>
+				<h1 class="page-header"><?php print $title; ?></h1>
+			<?php endif; ?>
+		<?php } ?>
+		<?php print render($title_suffix); ?>
+		<?php print $messages; ?>
+		<?php if (!empty($tabs)): ?>
+		<?php print render($tabs); ?>
+		<?php endif; ?>
+		<?php if (!empty($page['help'])): ?>
+		<?php print render($page['help']); ?>
+		<?php endif; ?>
+		<?php if (!empty($action_links)): ?>
+		<ul class="action-links"><?php print render($action_links); ?></ul>
+		<?php endif; ?>
+		<?php print render($page['content']); ?>
+	</section>
 
-  </div>
+	<?php if (!empty($page['sidebar_second'])): ?>
+		<aside class="col-sm-3" role="complementary">
+		<?php print render($page['sidebar_second']); ?>
+		</aside>	<!-- /#sidebar-second -->
+	<?php endif; ?>
+
+	</div>
 </div>
 <footer class="footer container">
-  <?php print render($page['footer']); ?>
+	<?php print render($page['footer']); ?>
 </footer>
