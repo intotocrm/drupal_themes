@@ -207,3 +207,18 @@ function bootstrap_dashboard_field_group_build_pre_render_alter(&$element)
 //    $element['hide_admin_field_group']['#access'] = FALSE;
 //  }
 }
+
+function bootstrap_dashboard_preprocess_bef_checkbox(&$variables) 
+{	
+	if (($key = array_search('form-control', $variables['element']['#attributes']['class'])) !== false) {
+		unset($variables['element']['#attributes']['class'][$key]);
+	}
+}
+
+
+function bootstrap_dashboard_preprocess_select_as_checkboxes(&$variables) 
+{	
+	if (($key = array_search('form-control', $variables['element']['#attributes']['class'])) !== false) {
+		unset($variables['element']['#attributes']['class'][$key]);
+	}
+}
