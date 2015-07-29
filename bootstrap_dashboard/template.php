@@ -9,7 +9,9 @@
 function bootstrap_dashboard_preprocess_html(&$variables) {
     
     $is_admin = in_array("administrator",  $GLOBALS['user']->roles);
+	$user_var = $GLOBALS['user'];
     $variables['classes_array'][] = $is_admin ? 'admin-user' : "non-admin-user";
+    $variables['user_var'] = $user_var;
 }
 
 
@@ -118,6 +120,9 @@ function bootstrap_dashboard_preprocess_page(&$variables)
 	//
 	//bible: https://www.drupal.org/node/933976
 	
+	
+    $variables['is_authenticated_user'] = in_array("authenticated user",  $GLOBALS['user']->roles) ? 1 : 0;
+
 	$variables['content_column_class'] = ' class="col-sm-12"'; //not as planned in bootstrap while there might be sidebar-first and sidebr-second each of which 
 																// take 3 columns out of the 12 but it's more suitable with this hacked theme
 	
@@ -134,8 +139,6 @@ function bootstrap_dashboard_preprocess_page(&$variables)
 	{
 		print "error in theme: please unset bootstrap_region_well-sidebar_first<br>";
 	}
-	
-	$variables['header_content'] = 'header content place holder';
 }
 
 
