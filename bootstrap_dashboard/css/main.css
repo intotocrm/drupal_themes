@@ -104,10 +104,70 @@ To change this template file, choose Tools | Templates
 and open the template in the editor.
 */
 /* 
+    Created on : 12/05/2015, 15:57:02
+    Author     : Roi
+*/
+/*
+@import "./variables.less";
+
+.crm-container .panel
+{
+    .zero_all_settings;
+    &:extend(.panel);
+    display:block;
+}
+
+.crm-container .panel-primary
+{
+    &:extend(.panel-primary);
+}
+.crm-container .panel-primary > .panel-heading
+{
+    &:extend(.panel-primary>.panel-heading);
+}
+
+.crm-container .panel-primary > .panel-heading h3
+{
+    color:inherit;
+}
+.crm-container .panel-default
+{
+    &:extend(.panel-default);
+}
+
+
+.panel-heading 
+{
+    div
+    {
+	display:inline-block;
+	padding-right:10px;
+    }
+}
+
+.panel-body 
+{
+    div
+    {
+	display:inline-block;
+	padding-right:10px;
+    }
+}
+*/
+.panel-primary > .panel-heading > a {
+  color: inherit;
+}
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
     Created on : 23/07/2015, 17:31:16
     Author     : Roi
 */
-.panel-heading {
+.panel-heading,
+panel > h2 {
   text-align: center;
 }
 .panel-heading h2 {
@@ -5630,10 +5690,12 @@ button.list-group-item-danger.active:focus {
   -webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05);
   box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05);
 }
-.panel-body {
+.panel-body,
+panel > pane-content {
   padding: 15px;
 }
-.panel-heading {
+.panel-heading,
+panel > h2 {
   padding: 10px 15px;
   border-bottom: 1px solid transparent;
   border-top-right-radius: 3px;
@@ -6662,7 +6724,9 @@ button.close {
 .panel-body:before,
 .panel-body:after,
 .modal-footer:before,
-.modal-footer:after {
+.modal-footer:after,
+panel > pane-content:before,
+panel > pane-content:after {
   content: " ";
   display: table;
 }
@@ -6680,7 +6744,8 @@ button.close {
 .navbar-collapse:after,
 .pager:after,
 .panel-body:after,
-.modal-footer:after {
+.modal-footer:after,
+panel > pane-content:after {
   clear: both;
 }
 .center-block {
@@ -6955,6 +7020,46 @@ body.navbar-is-fixed-top {
 .logo img {
   max-height: 35px;
 }
+@media screen and (min-width: 768px) {
+  .navbar .logo {
+    padding-left: 15px;
+  }
+}
 .region {
   padding-top: 15px;
+}
+.profile_data_container {
+  float: left;
+  margin-right: 20px;
+  max-width: 30%;
+}
+.profile_data_container .field {
+  float: right;
+}
+.profile_data_fields {
+  float: right;
+  text-align: right;
+  margin-right: 0px;
+}
+.panel-body,
+panel > pane-content {
+  border: #eeeeee solid 1px;
+}
+.panel,
+.panel-heading,
+.homebox-portlet-inner,
+panel > h2 {
+  border: none;
+}
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 30/07/2015, 18:20:37
+    Author     : Roi
+*/
+div.field-group-tabs-wrapper div.field-type-datetime fieldset {
+  padding: 0;
 }

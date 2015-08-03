@@ -19,7 +19,52 @@ body.navbar-is-fixed-top {
     max-height: 35px;
 }
 
+@media screen and (min-width: 768px)
+{
+    .navbar .logo {
+	padding-left: 15px;  //to avoid the bad override in bootstrap/css/overrides.css
+    }
+}
+
 .region
 {
     padding-top:15px;
+}
+
+.profile_data_container
+{
+    float:left;
+    margin-right:20px;
+    max-width:30%;
+    .field{
+	float:right;
+    }
+    
+}
+
+.profile_data_fields
+{
+    float:right;
+    text-align:right;
+    margin-right:0px;
+}
+
+.panel-body
+{
+    border:@gray-lighter solid 1px; //@panel-default-border
+}
+
+.panel,
+.panel-heading
+{
+    border:none;
+}
+
+panel>h2
+{
+    &:extend(.panel-heading);
+}
+panel>pane-content
+{
+    &:extend(.panel-body);
 }

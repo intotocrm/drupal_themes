@@ -6,6 +6,8 @@
  * and open the template in the editor.
  */
 
+
+
 function bootstrap_dashboard_preprocess_html(&$variables) {
     
     $is_admin = in_array("administrator",  $GLOBALS['user']->roles);
@@ -142,22 +144,6 @@ function bootstrap_dashboard_preprocess_page(&$variables)
 }
 
 
-// change to field__field_collection ?
-function bootstrap_dashboard_preprocess_field(&$variables, $hook) {
-//  $element = $variables['element'];
-//  if (isset($element['#field_name'])) {
-//    if ($element['#field_name'] == 'field_instant_messaging_collecti') {
-//      //$variables['classes_array'][] = 'aClassName';
-//		print "<pre>" . print_r(array_keys($variables), true). "</pre>";
-//		print "<pre>" . print_r($variables['field_name_css'], true). "</pre>";
-//		print "<pre>" . print_r($variables['field_type_css'], true). "</pre>";
-//		print "<pre>" . print_r($variables['classes_array'], true). "</pre>";
-//		print "<pre>" . print_r($variables['theme_hook_suggestions'], true). "</pre>";
-//		
-//		$variables['classes_array'][] = 'hidden';
-//    }
-//  }
-}
 
 /**
  * Implements hook_preprocess_HOOK().
@@ -171,8 +157,22 @@ function bootstrap_dashboard_preprocess_entity(&$variables, $hook)
 		$function($variables, $hook);
 	}
 }
+
+if(!function_exists("get_default_image")){
+	function get_default_image($bundle)
+	{
+		$image_filename = "default_image_$bundle.jpg";
+		///sites/default/files/styles/thumbnail_square/public/profile_images/default_images/' . $image_filename . '
+		$file_uri = file_create_url(file_build_uri("pictures/$image_filename"));
+		return array(
+			"#markup" => '<img src="' . $file_uri . '" width="100" height="100"/>'
+		);
+	}
+}
+
 function bootstrap_dashboard_preprocess_entity_crm_core_contact(&$variables, $hook)
 {
+
 //	file_save_data(print_r($variables['content']['field_instant_messaging_collecti'], true), 'public://vars_file');
 //	watchdog("bootstrap_dashboard", "preprocess_contact:" . print_r($variables, true));	
 	foreach (array('field_instant_messaging_collecti', 'field_phone', 'field_address') as $field)
@@ -184,6 +184,14 @@ function bootstrap_dashboard_preprocess_entity_crm_core_contact(&$variables, $ho
 //    $variables['element']['hide_admin_field_group'] = TRUE;
 //  }
 //	drupal_add_region_content('contactheader', array('#type' => 'markup','#markup'=>'*******************************'));
+		
+	if (!isset($variables['content']['field_image']['#items']))
+	{
+		$variables['image_field_content'] = get_default_image($variables['crm_core_contact']->type);//array('#markup' => '<img src="' . "XXX" . '"/>');
+	}
+	else {
+		$variables['image_field_content'] = $variables['content']['field_image'];
+	}
 }
 
 //function bootstrap_dashboard_preprocess_region(&$variables) {
@@ -224,4 +232,134 @@ function bootstrap_dashboard_preprocess_select_as_checkboxes(&$variables)
 	if (($key = array_search('form-control', $variables['element']['#attributes']['class'])) !== false) {
 		unset($variables['element']['#attributes']['class'][$key]);
 	}
+}
+
+
+function bootstrap_dashboard_preprocess_views_view(&$vars) {
+
+  $name = $vars['name'];
+  $display_id = $vars['display_id'];
+
+  //print "view_name $name disp $display_id";
+  if ($name=='siblings'){// && $display_id=='DISPLAYYOUWANT') {
+    $vars['rows']='<div class="panel panel-default"><div class="panel-heading">Household Members</div><div class="panel-body">' . $vars['rows'] . '</div></div>';
+  }
+}
+
+
+function bootstrap_dashboard_label_formatter($element)
+{
+//unset ($element['field_instance']['bundle']);
+//unset ($element['field_instance']['bundle']);
+
+	//return '<pre>display:'. print_r($element['display'], true).' </pre>';
+	//return '<pre>field label:'. print_r($element['field_instance'], true).' </pre>^^^' .'<pre>field_inastance:'. print_r(array_keys($element['field_instance']), true).' </pre>^^^' . $element['value'] . '^^^';//<a class="mobile-tel" href="tel:' . $element['element']['number']  . '">Call</a>';
+
+	$field_type = $element['field']['type'];
+	$value = $element['value'];
+	$label = $element['field_instance']['label'];
+	$label_hidden = $element['display']['label'] == 'hidden';
+	
+	$open = '<div class="label label-primary "><span>';
+	$close = '</span></div>';
+	
+	$output = "";
+	if($field_type  == 'list_boolean')
+	{
+		if (!empty($value))
+		{
+			$output .= $open . $label . $close;
+		}
+	}
+	else
+	{
+		if (strlen(trim($value)) > 0)
+		{
+			$output .= $open;
+			if (!$label_hidden)
+			{
+				$output .= $label . ':&nbsp;';
+			}
+			$output .=  $value;
+			$output .=  $close;
+		}else
+		{
+			$output .= "empty val: ". $open .$label . ':&nbsp;' . $value. $close;
+		}
+	}
+
+	return $output;
+	
+}
+
+function bootstrap_dashboard_preprocess_field(&$variables, $hook)
+{
+	if(isset($variables['element']['#formatter']) && $variables['element']['#formatter'] == 'intoto_label_formatter')
+	{
+//		print "<pre>".print_r($variables['element']['#formatter'], true )."</pre>";
+//		print "<pre>".print_r($variables['label_hidden'], true )."</pre>";
+		$variables['label_hidden'] = true;
+	}
+}
+
+//THEMENAME_field__body__article
+function KEEP_bootstrap_dashboard_field($variables)
+{
+	if(isset($variables['element']['#formatter']) && $variables['element']['#formatter'] == 'intoto_crm_field_formatters_label_formatter')
+	{
+		$open = '<div class="label label-primary "><span>';
+		$close = '</span></div>';
+		$output = " ";
+		if (isset($variables['element']['#field_type']) &&
+				$variables['element']['#field_type'] == 'list_boolean')
+		{
+			if (!empty($variables['items'][0]['#markup']))
+			{
+				$output .= $open . $variables['label'] . $close;
+			}
+		}
+		else
+		{
+			if (isset($variables['items'][0]) && strlen(trim($variables['items'][0]['#markup'])) > 0)
+			{
+				$output .= $open;
+				if (!$variables['label_hidden'])
+				{
+					$output .= $variables['label'] . ':&nbsp;';
+				}
+				$output .=  $variables['items'][0]['#markup'];
+				$output .=  $close;
+			}
+
+		}
+		return $output;
+	}
+	else
+	{
+		$open = '<div class="label label-primary "><span>';
+		$close = '</span></div>';
+		$output = " ";
+		if (isset($variables['element']['#field_type']) &&
+				$variables['element']['#field_type'] == 'list_boolean')
+		{
+			if (!empty($variables['items'][0]['#markup']))
+			{
+				$output .= $open . $variables['label'] . $close;
+			}
+		}
+		else
+		{
+			if (isset($variables['items'][0]) && strlen(trim($variables['items'][0]['#markup'])) > 0)
+			{
+				$output .= $open;
+				if (!$variables['label_hidden'])
+				{
+					$output .= $variables['label'] . ':&nbsp;';
+				}
+				$output .=  $variables['items'][0]['#markup'];
+				$output .=  $close;
+			}
+
+		}
+		return $output;	}
 }
