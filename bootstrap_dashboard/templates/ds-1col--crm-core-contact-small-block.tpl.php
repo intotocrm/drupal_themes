@@ -46,7 +46,7 @@
 			<div class='profile_data_container'>
 				<div class="frame">							
 					<div class="crop">
-						<?php print render($image); ?>
+						<?php print render($image_field_content); ?>
 					</div>								
 				</div>								
 			</div>
@@ -61,6 +61,11 @@
 				<?php print_label_if_exists('field_program', $content);?>
 				<?php print_label_if_exists('field_bedford', $content);?>
 				<?php print_label_if_exists('field_mhb', $content);?>
+				<?php 
+					foreach($disconnect_links as $link){
+						print l($link['text'], $link['path']);
+					}
+				?>
 
 			</div>
 
