@@ -7016,19 +7016,57 @@ and open the template in the editor.
 body.navbar-is-fixed-top {
   padding-top: 51px!important;
   /*override the override*/
+  background-color: #f8f8f8;
+}
+.sidebar {
+  margin-top: initial;
+}
+/*@media screen and (min-height: 768px)
+{
+    body{
+	min-height: 1200px;
+    }
+}*/
+footer,
+footer.footer {
+  position: absolute;
+  bottom: 0px;
+  width: 100%;
+  margin: 0px;
+  border-top: 1px solid #777777;
+  border-bottom: none;
+  border-right: none;
+  border-left: none;
+  background-color: #777777;
+  color: white;
+}
+.page-wrapper {
+  padding-bottom: 60px;
+}
+#infra_logo img {
+  max-height: 20px;
 }
 .logo img {
-  max-height: 20px;
-  margin-top: 10px;
+  max-height: 35px;
 }
 @media screen and (min-width: 768px) {
   .navbar .logo {
     padding-left: 15px;
   }
 }
-.region {
+.page-wrapper .region {
   padding-top: 15px;
+  padding-bottom: 15px;
 }
+#infra_logo {
+  padding: 5px;
+}
+/*@media screen and (min-width: 768px){
+    #infra_logo
+    {
+	float:right;
+    }
+}*/
 .profile_data_container {
   float: left;
   margin-right: 20px;

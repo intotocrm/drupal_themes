@@ -95,11 +95,12 @@
 			<span class="icon-bar"></span>
 			<span class="icon-bar"></span>
 			</button>
+			
 		</div>
 
 		<?php if (!empty($primary_nav) || !empty($secondary_nav) || !empty($page['navigation'])): ?>
 			<div class="navbar-collapse collapse">
-			<nav role="navigation">
+				<nav role="navigation">
 				<?php //comment out because no primary nav needed with tb mega
 				//if (!empty($primary_nav)): ?>
 				<?php //print render($primary_nav); ?>
@@ -107,10 +108,17 @@
 				<?php if (!empty($secondary_nav)): ?>
 				<?php print render($secondary_nav); ?>
 				<?php endif; ?>
+				<a id="infra_logo" class="logo navbar-btn pull-right" href="/" title="Home">
+							<img src="http://orm-il.devinto.to/sites/default/files/intoto_logo.png" alt="Home">
+				</a>
+					
+
 				<?php if (!empty($page['navigation'])): ?>
 				<?php print render($page['navigation']); ?>
 				<?php endif; ?>
 			</nav>
+
+		
 
 
 		<div class="navbar-default sidebar" role="navigation">
@@ -193,7 +201,8 @@
 
 		</div>
 	</div>
-	<footer class="footer container">
-		<?php print render($page['footer']); ?>
+<!--	<footer class="footer container">
+		<?php //print render($page['footer']); ?>
 	</footer>
+-->
 <?php }?>

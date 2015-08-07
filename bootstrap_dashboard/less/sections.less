@@ -11,13 +11,46 @@ and open the template in the editor.
 
 body.navbar-is-fixed-top {
   padding-top: 51px!important; /*override the override*/
+  background-color: @gray-lightest;
 }
 
+.sidebar{
+    margin-top: initial; //fix sb-admin-2 (was 51px)
+}
+/*@media screen and (min-height: 768px)
+{
+    body{
+	min-height: 1200px;
+    }
+}*/
 
-.logo img
+footer,
+footer.footer
+{
+    position:absolute;
+    bottom:0px;
+    width:100%;
+    margin:0px;
+    border-top:1px solid @gray-light;
+    border-bottom:none;
+    border-right:none;
+    border-left:none;
+    background-color: @gray-light;
+    color:white;
+}
+.page-wrapper
+{
+    padding-bottom:60px;
+}
+#infra_logo img
 {
     max-height: 20px;
-    margin-top: 10px;
+//    margin-top: 10px;
+}
+.logo img
+{
+    max-height: 35px;
+//    margin-top: 10px;
 }
 
 @media screen and (min-width: 768px)
@@ -27,11 +60,22 @@ body.navbar-is-fixed-top {
     }
 }
 
-.region
+.page-wrapper .region  //we need some padding on region, only the one in the main content
 {
     padding-top:15px;
+    padding-bottom:15px;
+}
+#infra_logo
+{
+    padding:5px;
 }
 
+/*@media screen and (min-width: 768px){
+    #infra_logo
+    {
+	float:right;
+    }
+}*/
 .profile_data_container
 {
     float:left;
