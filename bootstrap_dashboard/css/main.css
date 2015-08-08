@@ -36,6 +36,12 @@ and open the template in the editor.
 .region-sidebar-first {
   padding: 0px !important;
 }
+#block-menu-features {
+  margin: 10px 0px;
+}
+#block-search-form {
+  padding: 10px;
+}
 /*
 To change this license header, choose License Headers in Project Properties.
 To change this template file, choose Tools | Templates
@@ -5187,14 +5193,20 @@ a.badge:focus {
   cursor: pointer;
 }
 .list-group-item.active > .badge,
-.nav-pills > .active > a > .badge {
+.nav-pills > .active > a > .badge,
+.list-group .field.active > .badge,
+.content .field.active > .badge {
   color: #337ab7;
   background-color: #ffffff;
 }
-.list-group-item > .badge {
+.list-group-item > .badge,
+.list-group .field > .badge,
+.content .field > .badge {
   float: right;
 }
-.list-group-item > .badge + .badge {
+.list-group-item > .badge + .badge,
+.list-group .field > .badge + .badge,
+.content .field > .badge + .badge {
   margin-right: 5px;
 }
 .nav-pills > li > a > .badge {
@@ -5479,7 +5491,9 @@ a.thumbnail.active {
   margin-bottom: 20px;
   padding-left: 0;
 }
-.list-group-item {
+.list-group-item,
+.list-group .field,
+.content .field {
   position: relative;
   display: block;
   padding: 10px 15px;
@@ -5487,55 +5501,101 @@ a.thumbnail.active {
   background-color: #ffffff;
   border: 1px solid #dddddd;
 }
-.list-group-item:first-child {
+.list-group-item:first-child,
+.list-group .field:first-child,
+.content .field:first-child {
   border-top-right-radius: 4px;
   border-top-left-radius: 4px;
 }
-.list-group-item:last-child {
+.list-group-item:last-child,
+.list-group .field:last-child,
+.content .field:last-child {
   margin-bottom: 0;
   border-bottom-right-radius: 4px;
   border-bottom-left-radius: 4px;
 }
 a.list-group-item,
-button.list-group-item {
+button.list-group-item,
+a.list-group .field,
+button.list-group .field,
+a.content .field,
+button.content .field {
   color: #555555;
 }
 a.list-group-item .list-group-item-heading,
-button.list-group-item .list-group-item-heading {
+button.list-group-item .list-group-item-heading,
+a.list-group .field .list-group-item-heading,
+button.list-group .field .list-group-item-heading,
+a.content .field .list-group-item-heading,
+button.content .field .list-group-item-heading {
   color: #333333;
 }
 a.list-group-item:hover,
 button.list-group-item:hover,
 a.list-group-item:focus,
-button.list-group-item:focus {
+button.list-group-item:focus,
+a.list-group .field:hover,
+button.list-group .field:hover,
+a.list-group .field:focus,
+button.list-group .field:focus,
+a.content .field:hover,
+button.content .field:hover,
+a.content .field:focus,
+button.content .field:focus {
   text-decoration: none;
   color: #555555;
   background-color: #f5f5f5;
 }
-button.list-group-item {
+button.list-group-item,
+button.list-group .field,
+button.content .field {
   width: 100%;
   text-align: left;
 }
 .list-group-item.disabled,
 .list-group-item.disabled:hover,
-.list-group-item.disabled:focus {
+.list-group-item.disabled:focus,
+.list-group .field.disabled,
+.list-group .field.disabled:hover,
+.list-group .field.disabled:focus,
+.content .field.disabled,
+.content .field.disabled:hover,
+.content .field.disabled:focus {
   background-color: #eeeeee;
   color: #777777;
   cursor: not-allowed;
 }
 .list-group-item.disabled .list-group-item-heading,
 .list-group-item.disabled:hover .list-group-item-heading,
-.list-group-item.disabled:focus .list-group-item-heading {
+.list-group-item.disabled:focus .list-group-item-heading,
+.list-group .field.disabled .list-group-item-heading,
+.list-group .field.disabled:hover .list-group-item-heading,
+.list-group .field.disabled:focus .list-group-item-heading,
+.content .field.disabled .list-group-item-heading,
+.content .field.disabled:hover .list-group-item-heading,
+.content .field.disabled:focus .list-group-item-heading {
   color: inherit;
 }
 .list-group-item.disabled .list-group-item-text,
 .list-group-item.disabled:hover .list-group-item-text,
-.list-group-item.disabled:focus .list-group-item-text {
+.list-group-item.disabled:focus .list-group-item-text,
+.list-group .field.disabled .list-group-item-text,
+.list-group .field.disabled:hover .list-group-item-text,
+.list-group .field.disabled:focus .list-group-item-text,
+.content .field.disabled .list-group-item-text,
+.content .field.disabled:hover .list-group-item-text,
+.content .field.disabled:focus .list-group-item-text {
   color: #777777;
 }
 .list-group-item.active,
 .list-group-item.active:hover,
-.list-group-item.active:focus {
+.list-group-item.active:focus,
+.list-group .field.active,
+.list-group .field.active:hover,
+.list-group .field.active:focus,
+.content .field.active,
+.content .field.active:hover,
+.content .field.active:focus {
   z-index: 2;
   color: #ffffff;
   background-color: #337ab7;
@@ -5549,12 +5609,36 @@ button.list-group-item {
 .list-group-item.active:focus .list-group-item-heading > small,
 .list-group-item.active .list-group-item-heading > .small,
 .list-group-item.active:hover .list-group-item-heading > .small,
-.list-group-item.active:focus .list-group-item-heading > .small {
+.list-group-item.active:focus .list-group-item-heading > .small,
+.list-group .field.active .list-group-item-heading,
+.list-group .field.active:hover .list-group-item-heading,
+.list-group .field.active:focus .list-group-item-heading,
+.list-group .field.active .list-group-item-heading > small,
+.list-group .field.active:hover .list-group-item-heading > small,
+.list-group .field.active:focus .list-group-item-heading > small,
+.list-group .field.active .list-group-item-heading > .small,
+.list-group .field.active:hover .list-group-item-heading > .small,
+.list-group .field.active:focus .list-group-item-heading > .small,
+.content .field.active .list-group-item-heading,
+.content .field.active:hover .list-group-item-heading,
+.content .field.active:focus .list-group-item-heading,
+.content .field.active .list-group-item-heading > small,
+.content .field.active:hover .list-group-item-heading > small,
+.content .field.active:focus .list-group-item-heading > small,
+.content .field.active .list-group-item-heading > .small,
+.content .field.active:hover .list-group-item-heading > .small,
+.content .field.active:focus .list-group-item-heading > .small {
   color: inherit;
 }
 .list-group-item.active .list-group-item-text,
 .list-group-item.active:hover .list-group-item-text,
-.list-group-item.active:focus .list-group-item-text {
+.list-group-item.active:focus .list-group-item-text,
+.list-group .field.active .list-group-item-text,
+.list-group .field.active:hover .list-group-item-text,
+.list-group .field.active:focus .list-group-item-text,
+.content .field.active .list-group-item-text,
+.content .field.active:hover .list-group-item-text,
+.content .field.active:focus .list-group-item-text {
   color: #c7ddef;
 }
 .list-group-item-success {
@@ -5729,27 +5813,43 @@ panel > h2 {
   margin-bottom: 0;
 }
 .panel > .list-group .list-group-item,
-.panel > .panel-collapse > .list-group .list-group-item {
+.panel > .panel-collapse > .list-group .list-group-item,
+.panel > .list-group .list-group .field,
+.panel > .panel-collapse > .list-group .list-group .field,
+.panel > .list-group .content .field,
+.panel > .panel-collapse > .list-group .content .field {
   border-width: 1px 0;
   border-radius: 0;
 }
 .panel > .list-group:first-child .list-group-item:first-child,
-.panel > .panel-collapse > .list-group:first-child .list-group-item:first-child {
+.panel > .panel-collapse > .list-group:first-child .list-group-item:first-child,
+.panel > .list-group:first-child .list-group .field:first-child,
+.panel > .panel-collapse > .list-group:first-child .list-group .field:first-child,
+.panel > .list-group:first-child .content .field:first-child,
+.panel > .panel-collapse > .list-group:first-child .content .field:first-child {
   border-top: 0;
   border-top-right-radius: 3px;
   border-top-left-radius: 3px;
 }
 .panel > .list-group:last-child .list-group-item:last-child,
-.panel > .panel-collapse > .list-group:last-child .list-group-item:last-child {
+.panel > .panel-collapse > .list-group:last-child .list-group-item:last-child,
+.panel > .list-group:last-child .list-group .field:last-child,
+.panel > .panel-collapse > .list-group:last-child .list-group .field:last-child,
+.panel > .list-group:last-child .content .field:last-child,
+.panel > .panel-collapse > .list-group:last-child .content .field:last-child {
   border-bottom: 0;
   border-bottom-right-radius: 3px;
   border-bottom-left-radius: 3px;
 }
-.panel > .panel-heading + .panel-collapse > .list-group .list-group-item:first-child {
+.panel > .panel-heading + .panel-collapse > .list-group .list-group-item:first-child,
+.panel > .panel-heading + .panel-collapse > .list-group .list-group .field:first-child,
+.panel > .panel-heading + .panel-collapse > .list-group .content .field:first-child {
   border-top-right-radius: 0;
   border-top-left-radius: 0;
 }
-.panel-heading + .list-group .list-group-item:first-child {
+.panel-heading + .list-group .list-group-item:first-child,
+.panel-heading + .list-group .list-group .field:first-child,
+.panel-heading + .list-group .content .field:first-child {
   border-top-width: 0;
 }
 .list-group + .panel-footer {
@@ -6725,6 +6825,10 @@ button.close {
 .panel-body:after,
 .modal-footer:before,
 .modal-footer:after,
+.list-group .field:before,
+.list-group .field:after,
+.content .field:before,
+.content .field:after,
 panel > pane-content:before,
 panel > pane-content:after {
   content: " ";
@@ -6745,6 +6849,8 @@ panel > pane-content:after {
 .pager:after,
 .panel-body:after,
 .modal-footer:after,
+.list-group .field:after,
+.content .field:after,
 panel > pane-content:after {
   clear: both;
 }
@@ -7044,7 +7150,7 @@ footer.footer {
   padding-bottom: 60px;
 }
 #infra_logo img {
-  max-height: 20px;
+  max-height: 27px;
 }
 .logo img {
   max-height: 35px;
@@ -7059,7 +7165,8 @@ footer.footer {
   padding-bottom: 15px;
 }
 #infra_logo {
-  padding: 5px;
+  padding: 0px;
+  margin-top: 7px;
 }
 /*@media screen and (min-width: 768px){
     #infra_logo
@@ -7101,4 +7208,8 @@ and open the template in the editor.
 */
 div.field-group-tabs-wrapper div.field-type-datetime fieldset {
   padding: 0;
+}
+.field-label-inline .field-label,
+.field-label-inline .field-items {
+  float: none;
 }

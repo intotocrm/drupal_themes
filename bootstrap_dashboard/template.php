@@ -284,7 +284,7 @@ function bootstrap_dashboard_label_formatter($element)
 			$output .=  $close;
 		}else
 		{
-			$output .= "empty val: ". $open .$label . ':&nbsp;' . $value. $close;
+			$output .= "empty value: ". $open .$label . ':&nbsp;' . $value. $close;
 		}
 	}
 
@@ -292,9 +292,88 @@ function bootstrap_dashboard_label_formatter($element)
 	
 }
 
+
+
+
+
+//
+//<div class="chat-body clearfix">
+//                                        <div class="header">
+//                                            <small class=" text-muted">
+//                                                <i class="fa fa-clock-o fa-fw"></i> 13 mins ago</small>
+//                                            <strong class="pull-right primary-font">Bhaumik Patel</strong>
+//                                        </div>
+//                                        <p>
+//                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur bibendum ornare dolor, quis ullamcorper ligula sodales.
+//                                        </p>
+//                                    </div>
+//		
+//		
+		
+function bootstrap_dashboard_bootstrap_formatter($element)
+{
+//unset ($element['field_instance']['bundle']);
+//unset ($element['field_instance']['bundle']);
+
+	//return '<pre>display:'. print_r($element['display'], true).' </pre>';
+	//return '<pre>field label:'. print_r($element['field_instance'], true).' </pre>^^^' .'<pre>field_inastance:'. print_r(array_keys($element['field_instance']), true).' </pre>^^^' . $element['value'] . '^^^';//<a class="mobile-tel" href="tel:' . $element['element']['number']  . '">Call</a>';
+
+	$field_type = $element['field']['type'];
+	$value = $element['value'];
+	//$label = $element['field_instance']['label'];
+	$label = $element['label'];
+	$label_hidden = $element['display']['label'] == 'hidden';
+	$comment = trim($element['comment']);
+	
+	$open = "";//'<div class="list-group-item">';
+	$close = "";'</div>';
+	
+	$output = "";
+//	if($field_type  == 'list_boolean')
+//	{
+//		if (!empty($value))
+//		{
+//			$output .= $open . $label . $close;
+//		}
+//	}
+//	else
+	{
+		if (strlen(trim($value)) > 0)
+		{
+			$output .= $open;
+//				$output .= "<span class=\"header\">
+//								<strong class=\"primary-font\">$label</strong>
+//							</span>";
+			$output .= "<span>" . ((empty($label) || (strlen(trim($label)) == 0) || $label_hidden) ? "&nbsp;" : $label ) . "</span>";
+			$output .= "<div class=\"pull-right\">";
+			$output .=  "<strong class=\"primary-font\">$value</strong>";
+			if (strlen($comment) > 0){
+				$output .= "<span class='text-muted small'> (" . $comment . ")</span>";
+			}
+			//$output .=  "<p>$value</p>";
+			$output .= "</div>";
+			$output .=  $close;
+		}else
+		{
+			$output .= "empty value: ". $open .$label . ':&nbsp;' . $value. $close;
+		}
+	}
+
+	return $output;
+	
+}
+
+
+
+
 function bootstrap_dashboard_preprocess_field(&$variables, $hook)
 {
-	if(isset($variables['element']['#formatter']) && $variables['element']['#formatter'] == 'intoto_label_formatter')
+	if(isset($variables['element']['#formatter']) && 
+				(
+					$variables['element']['#formatter'] == 'intoto_label_formatter' ||
+					$variables['element']['#formatter'] == 'intoto_bootstrap_formatter' 
+				)
+			)
 	{
 //		print "<pre>".print_r($variables['element']['#formatter'], true )."</pre>";
 //		print "<pre>".print_r($variables['label_hidden'], true )."</pre>";
@@ -363,3 +442,6 @@ function KEEP_bootstrap_dashboard_field($variables)
 		}
 		return $output;	}
 }
+
+
+

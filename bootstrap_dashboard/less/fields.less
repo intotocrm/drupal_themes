@@ -12,3 +12,14 @@ div.field-group-tabs-wrapper div.field-type-datetime fieldset
 {
     padding: 0;
 }
+
+.list-group .field,
+.content .field
+{
+    &:extend(.list-group-item all);
+    &:extend(.clearfix all);
+}
+
+.field-label-inline .field-label, .field-label-inline .field-items{
+    float:none; //this to overcome the "inline" label settings that causes the field label AND value to float to the left.
+}
