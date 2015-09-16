@@ -109,7 +109,7 @@
 				<?php print render($secondary_nav); ?>
 				<?php endif; ?>
 				<a id="infra_logo" class="logo navbar-btn pull-right" href="/" title="Home">
-							<img src="/sites/default/files/intoto_logo.png" alt="Home">
+							<img src="/sites/default/files/pictures/intoto-logo-blue-beta.png" alt="Home">
 				</a>
 					
 
