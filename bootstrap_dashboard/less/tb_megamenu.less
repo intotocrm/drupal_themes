@@ -83,3 +83,39 @@ and open the template in the editor.
     &:extend(.nav>li>a:hover);
     .menu-fonts;
 }
+
+
+.tb-megamenu-column-inner ul,  //all this is for making a simple dropdown seem nice with the li items reaching the border of the menu
+.dropdown-menu
+{
+//	&:extend(.list-group all);
+	padding:0 !important;
+	border:none !important;
+}
+
+.tb-megamenu-column-inner>ul>li
+{
+	&:extend(.list-group-item all);
+}
+
+.tb-megamenu-column-inner>ul>li a
+{
+	text-decoration:none;
+}
+
+
+.list-group-item.active a,
+.list-group-item.active:hover a,
+.list-group-item.active:focus a,
+.tb-megamenu-column-inner > ul > li.active a,
+.tb-megamenu-column-inner > ul > li.active:hover a,
+.tb-megamenu-column-inner > ul > li.active:focus a,
+.list-group .field.active a,
+.list-group .field.active:hover a,
+.list-group .field.active:focus a,
+.content .field.active a,
+.content .field.active:hover a,
+.content .field.active:focus a
+{
+	color:white;
+}
