@@ -1,0 +1,33 @@
+name = Bootstrap Admin Tammuz 
+description = Subtheme bootstrap for Tammuz 
+core = 7.x
+
+base theme = bootstrap_dashboard
+
+
+;;;;;;;;;;;;;;;;;;;;;
+;; Styles
+;;;;;;;;;;;;;;;;;;;;;
+stylesheets[all][] = css/tammuz.css
+
+;;;;;;;;;;;;;;;;;;;;;
+;; Scripts
+;;;;;;;;;;;;;;;;;;;;;
+;scripts[] = js/vertical-menu-js
+;;;;;;;;;;;;;;;;;;;;;
+;; Regions
+;;;;;;;;;;;;;;;;;;;;;
+
+regions[navigation]     = 'Navigation'
+regions[header]         = 'Top Bar'
+regions[highlighted]    = 'Highlighted'
+regions[help]           = 'Help'
+regions[content]        = 'Content'
+regions[sidebar_first]  = 'Primary'
+regions[sidebar_second] = 'Secondary'
+regions[footer]         = 'Footer'
+regions[page_top]       = 'Page top'
+regions[page_bottom]    = 'Page bottom'
+regions[contactheader]  = 'Contact Header'
+
+settings[bootstrap_navbar_position] = 'navbar-fixed-top'

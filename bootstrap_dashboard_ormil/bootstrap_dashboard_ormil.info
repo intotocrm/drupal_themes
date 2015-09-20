@@ -1,0 +1,43 @@
+name = Bootstrap Admin ORMIL
+description = Subtheme bootstrap for ORMIL
+core = 7.x
+
+base theme = bootstrap_dashboard
+
+
+;;;;;;;;;;;;;;;;;;;;;
+;; Styles
+;;;;;;;;;;;;;;;;;;;;;
+;stylesheets[all][] = css/civicrm_gen.css
+;stylesheets[all][] = css/sb-admin-2.css
+;stylesheets[all][] = css/bootstrap.css
+;stylesheets[all][] = css/bootstrap-theme.css
+;stylesheets[all][] = css/tb_megamenu.css
+stylesheets[all][] = css/ormil.css
+;stylesheets[all][] = css/tb-megamenues-vertical.css
+;stylesheets[all][] = css/style.css
+;stylesheets[all][] = css/civicrm_custom.css
+;stylesheets[all][] = css/bootstrap_custom.css
+;stylesheets[all][] = css/adapt_bootstrap_to_civicrm.less
+
+;;;;;;;;;;;;;;;;;;;;;
+;; Scripts
+;;;;;;;;;;;;;;;;;;;;;
+;scripts[] = js/vertical-menu-js
+;;;;;;;;;;;;;;;;;;;;;
+;; Regions
+;;;;;;;;;;;;;;;;;;;;;
+
+regions[navigation]     = 'Navigation'
+regions[header]         = 'Top Bar'
+regions[highlighted]    = 'Highlighted'
+regions[help]           = 'Help'
+regions[content]        = 'Content'
+regions[sidebar_first]  = 'Primary'
+regions[sidebar_second] = 'Secondary'
+regions[footer]         = 'Footer'
+regions[page_top]       = 'Page top'
+regions[page_bottom]    = 'Page bottom'
+regions[contactheader]  = 'Contact Header'
+
+settings[bootstrap_navbar_position] = 'navbar-fixed-top'
