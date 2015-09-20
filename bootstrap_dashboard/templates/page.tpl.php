@@ -169,8 +169,8 @@
 			<?php endif; ?>
 			<?php if (!empty($breadcrumb)): print $breadcrumb; endif;?>
 			<a id="main-content"></a>
-			<?php if ($contact_renderable){?>
-				<?php print render($contact_renderable); ?>
+			<?php if ($page['contactheader']){?>
+				<?php print render($page['contactheader']); ?>
 			<?php } else { ?>
 
 				<?php print render($title_prefix); ?>
