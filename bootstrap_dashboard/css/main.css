@@ -1430,7 +1430,8 @@ h6,
 .h3,
 .h4,
 .h5,
-.h6 {
+.h6,
+.one_liner .profile_data_container .field-name-contact-name .field-item {
   font-family: inherit;
   font-weight: 500;
   line-height: 1.1;
@@ -1492,7 +1493,8 @@ h4,
 h5,
 .h5,
 h6,
-.h6 {
+.h6,
+.one_liner .profile_data_container .field-name-contact-name .field-item {
   margin-top: 10px;
   margin-bottom: 10px;
 }
@@ -1523,7 +1525,8 @@ h3,
   font-size: 24px;
 }
 h4,
-.h4 {
+.h4,
+.one_liner .profile_data_container .field-name-contact-name .field-item {
   font-size: 18px;
 }
 h5,
@@ -7268,6 +7271,12 @@ footer.footer {
 .profile_data_container .field {
   float: right;
 }
+.one_liner .profile_data_container {
+  max-width: 60%;
+}
+.one_liner .profile_data_container .field {
+  float: left;
+}
 .profile_data_fields {
   float: right;
   text-align: right;
@@ -7298,4 +7307,13 @@ div.field-group-tabs-wrapper div.field-type-datetime fieldset {
 .field-label-inline .field-label,
 .field-label-inline .field-items {
   float: none;
+}
+.label-primary a {
+  color: white;
+}
+.nolink,
+.nolink:hover,
+.nolink:focus,
+.nolink:visited {
+  text-decoration: none;
 }

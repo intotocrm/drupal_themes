@@ -50,8 +50,15 @@
 	<section id="<?php print $block_html_id; ?>" class="<?php print $classes; ?> clearfix"<?php print $attributes; ?>>
 <?php }else{
 ?>
-<div class="col-lg-4 col-md-6">
-<?php }
+	
+	<?php
+		if ($block->delta == "00d9d681566b18de6c08a85415c42a0f"){
+	?>	
+	<div class="col-lg-6 col-md-6">
+		<?php }else{ ?>
+	<div class="col-lg-4 col-md-6">
+		<?php }
+}
 ?>
 	
   <?php print render($title_prefix); ?>

@@ -24,8 +24,8 @@
 		}
 	}
 	$entity_info = $crm_core_contact->entityInfo();
-	$image = //safe_var_export('field_image', $content);
-	$image_field_content;
+	$image = safe_var_export('field_image', $content);
+	//$image_field_content;
 	$name = safe_var_export('contact_name', $content);
 	$contact_id = isset($crm_core_contact->contact_id) ? $crm_core_contact->contact_id : NULL;
 	$contact_type_label = isset($crm_core_contact->type) ?

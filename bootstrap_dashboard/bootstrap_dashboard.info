@@ -24,6 +24,8 @@ stylesheets[all][] = css/main.css
 ;; Scripts
 ;;;;;;;;;;;;;;;;;;;;;
 ;scripts[] = js/vertical-menu-js
+scripts[] = js/phone_links.js
+
 ;;;;;;;;;;;;;;;;;;;;;
 ;; Regions
 ;;;;;;;;;;;;;;;;;;;;;

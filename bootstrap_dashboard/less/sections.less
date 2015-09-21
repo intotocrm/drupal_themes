@@ -84,9 +84,23 @@ footer.footer
     margin-right:20px;
     max-width:30%;
     .field{
-	float:right;
+		float:right;
     }
-    
+}
+
+.one_liner .profile_data_container
+{
+	max-width:60%;
+	.field{
+		float:left;
+	}
+	.field-name-contact-name
+	{
+		.field-item
+		{
+			&:extend(h4);
+		}
+	}
 }
 
 .profile_data_fields

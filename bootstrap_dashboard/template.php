@@ -164,8 +164,10 @@ if(!function_exists("get_default_image")){
 		$image_filename = "default_image_$bundle.jpg";
 		///sites/default/files/styles/thumbnail_square/public/profile_images/default_images/' . $image_filename . '
 		$file_uri = file_create_url(file_build_uri("pictures/$image_filename"));
+		//$image_styled = theme_image_style(array("style_name"=>"thumb_small", "path" => "public:///sites/default/files/pictures/$image_filename" , "width"=>0, "height" => 0));
 		return array(
-			"#markup" => '<img src="' . $file_uri . '" width="100" height="100"/>'
+			"#markup" => '<img src="' . $file_uri . '" width="100" height="100"/>',
+//			"#markup" => $image_styled
 		);
 	}
 }
@@ -176,8 +178,12 @@ function bootstrap_dashboard_preprocess_entity_crm_core_contact(&$variables, $ho
 //	file_save_data(print_r($variables['content']['field_instant_messaging_collecti'], true), 'public://vars_file');
 //	watchdog("bootstrap_dashboard", "preprocess_contact:" . print_r($variables, true));	
 	foreach (array('field_instant_messaging_collecti', 'field_phone', 'field_address') as $field)
+	{
 		if (empty($variables['content'][$field]['#items']))
+		{
 			$variables['content'][$field]['#access'] = 0;
+		}
+	}
 //	print "<pre>" . print_r(array_key($variables), true). "</pre>";	
 //  if ($variables['uid'] != 1) {
 //    // You can call this variable any way you want, just put it into $variables['element'] and set as TRUE.
@@ -189,7 +195,8 @@ function bootstrap_dashboard_preprocess_entity_crm_core_contact(&$variables, $ho
 	{
 		$variables['image_field_content'] = get_default_image($variables['crm_core_contact']->type);//array('#markup' => '<img src="' . "XXX" . '"/>');
 	}
-	else {
+	else
+	{
 		$variables['image_field_content'] = $variables['content']['field_image'];
 	}
 }
@@ -292,7 +299,51 @@ function bootstrap_dashboard_label_formatter($element)
 	
 }
 
+function bootstrap_dashboard_icon_formatter($element)
+{
+//unset ($element['field_instance']['bundle']);
+//unset ($element['field_instance']['bundle']);
 
+	//return '<pre>display:'. print_r($element['display'], true).' </pre>';
+	//return '<pre>field label:'. print_r($element['field_instance'], true).' </pre>^^^' .'<pre>field_inastance:'. print_r(array_keys($element['field_instance']), true).' </pre>^^^' . $element['value'] . '^^^';//<a class="mobile-tel" href="tel:' . $element['element']['number']  . '">Call</a>';
+
+	$field_type = $element['field']['type'];
+	$value = $element['value'];
+	if (is_array($value)){$value = print_r($value, true);}
+	$label = $element['field_instance']['label'];
+	$label_hidden = $element['display']['label'] == 'hidden';
+	
+	$open = '<div class="label label-primary "><span>';
+	$close = '</span></div>';
+	
+	$output = "";
+	if($field_type  == 'list_boolean')
+	{
+		if (!empty($value))
+		{
+			$output .= $open . $label . $close;
+		}
+	}
+	else
+	{
+		if (strlen(trim($value)) > 0)
+		{
+			$output .= $open;
+			if (!$label_hidden)
+			{
+				$output .= $label . ':&nbsp;';
+			}
+			$output .=  $value;
+			$output .=  $close;
+		}else
+		{
+			$output .= "empty value: ". $open .$label . ':&nbsp;' . $value. $close;
+		}
+	}
+
+	return $output;
+	
+}
 
 
 
@@ -442,6 +493,3 @@ function KEEP_bootstrap_dashboard_field($variables)
 		}
 		return $output;	}
 }
-
-
-
