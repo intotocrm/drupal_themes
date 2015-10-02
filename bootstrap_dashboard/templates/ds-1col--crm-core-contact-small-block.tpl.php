@@ -46,13 +46,18 @@
 			<div class='profile_data_container'>
 				<div class="frame">							
 					<div class="crop">
-						<?php print render($image_field_content); ?>
+						<?php //print render($image_field_content); 
+						print render($variables['elements']['field_image'])?>
 					</div>								
 				</div>								
 			</div>
 			<div class='profile_data_container'>
 				<a href="<?php print $contact_url;?>">
-					<h4><?php print $title; ?> </h4>
+					<h4>*
+					<?php //print $title; 
+								print render($variables['elements']['contact_name']);
+							?>
+^					</h4>
 				</a>
 				<small><?php print $contact_type_label ; ?></small>
 			</div>

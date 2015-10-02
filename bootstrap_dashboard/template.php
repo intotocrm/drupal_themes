@@ -299,15 +299,94 @@ function bootstrap_dashboard_label_formatter($element)
 	
 }
 
+
+function build_icon_field($element, $html)
+{
+		$value_string = $element['value'];
+		$label = $element['field_instance']['label'];
+		return "<div title=\"$label: $value_string\" class=\"field-display-icon\">$html</div>";
+}
+
+function bootstrap_dashboard_icon_formatter_field_status($element)
+{
+	if (isset($element['element']['value']))
+	{
+		$competitor = "<i class=\"fa fa-exclamation\"></i>";
+		$value = $element['element']['value'];
+		
+		$ret = "";
+		switch ($value){
+			case 'potential' : $ret = "<i class=\"fa fa-question-circle\"></i>";
+				break;
+			case 'past_patient' : $ret = "<i class=\"fa fa-heart-o\"></i>";
+				break;
+			case 'patient' : $ret = "<i class=\"fa fa-rocket\"></i>";
+				break;
+			case 'competitor' : $ret = "<i class=\"fa fa-exclamation-circle\"></i>";
+				break;
+			default:
+			return bootstrap_dashboard_icon_formatter_default($element);
+		}
+		return build_icon_field($element, $ret);
+	}
+	return bootstrap_dashboard_icon_formatter_default($element);
+}
+
+function bootstrap_dashboard_icon_formatter_field_sales_category($element)
+{
+	if (isset($element['element']['value']))
+	{
+		$fire = "<i class=\"fa fa-fire\"></i>";
+		$cold_fire = "<i class=\"outline-text fa fa-fire \"></i>";
+		$flash = "<i class=\"fa fa-bolt\"></i>";
+		$value = $element['element']['value'];
+		
+		$ret = "";
+		switch ($value){
+			case 'cold' : $ret = $cold_fire;
+				break;
+			case 'warm' : $ret = str_repeat($fire, 1);
+				break;
+			case 'moderate' : $ret = str_repeat($fire, 2);
+				break;
+			case 'hot' : $ret = str_repeat($fire, 3);
+				break;
+			case 'new' : $ret = $flash;
+				break;
+			default:
+			return bootstrap_dashboard_icon_formatter_default($element);
+		}
+		return build_icon_field($element, $ret);
+	}
+	return bootstrap_dashboard_icon_formatter_default($element);
+}
+
 function bootstrap_dashboard_icon_formatter($element)
 {
-//unset ($element['field_instance']['bundle']);
-//unset ($element['field_instance']['bundle']);
+	$field_name = $element['field']['field_name'];
+	$field_type = $element['field']['type'];
 
+	$function = __FUNCTION__ . '_' . $field_name;
+	if (function_exists($function)) {
+	  return $function($element);
+	}
+
+	$function = __FUNCTION__ . '_' . $field_type;
+	if (function_exists($function)) {
+	  return $function($element);
+	}
+	
+	return bootstrap_dashboard_icon_formatter_default($element);
+}
+
+function bootstrap_dashboard_icon_formatter_default($element)
+{
+	$field_name = $element['field']['field_name'];
+	$field_type = $element['field']['type'];
 	//return '<pre>display:'. print_r($element['display'], true).' </pre>';
 	//return '<pre>field label:'. print_r($element['field_instance'], true).' </pre>^^^' .'<pre>field_inastance:'. print_r(array_keys($element['field_instance']), true).' </pre>^^^' . $element['value'] . '^^^';//<a class="mobile-tel" href="tel:' . $element['element']['number']  . '">Call</a>';
-
-	$field_type = $element['field']['type'];
+	$add = "";
+	
 	$value = $element['value'];
 	if (is_array($value)){$value = print_r($value, true);}
 	$label = $element['field_instance']['label'];
@@ -341,7 +420,7 @@ function bootstrap_dashboard_icon_formatter($element)
 		}
 	}
 
-	return $output;
+	return "$add" . $output;
 	
 }
 
