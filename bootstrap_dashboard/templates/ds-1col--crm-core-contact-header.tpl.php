@@ -17,7 +17,8 @@ $contact = isset($vars['crm_core_contact']) ? $vars['crm_core_contact'] : NULL;
 	<?php endif; ?>
 	<?php
 		$image_rendered = render($variables['elements']['field_image']);  //render in advance so it is marked "#printed" 
-		$caption_rendered = render($variables['elements']['field_caption']);
+//		$caption_rendered = render($variables['elements']['field_caption']);
+		$caption_rendered = render($variables['elements']['contact_name']);
 	?>
 
 	<div class="panel panel-primary">
@@ -32,8 +33,8 @@ $contact = isset($vars['crm_core_contact']) ? $vars['crm_core_contact'] : NULL;
 					}
 				?>
 			</div>
-<!--			<a href="<?php print "/crm-core/contact/$contact_id";?>">
--->				<!--<i class="fa fa-comments fa-5x"></i>-->
+			<a href="<?php print "/crm-core/contact/$contact_id";?>">
+			<!--<i class="fa fa-comments fa-5x"></i>-->
 				<h2><?php print $caption_rendered; ?></h2>
 				<div class="frame">							
 					<div class="crop">
@@ -41,8 +42,7 @@ $contact = isset($vars['crm_core_contact']) ? $vars['crm_core_contact'] : NULL;
 					</div>								
 				</div>								
 				<small><?php print $contact_type_label ; ?></small>
-<!--			</a>
--->
+			</a>
 			<div class="clearfix"></div>
 		</div>
 		<div class="panel-footer">
