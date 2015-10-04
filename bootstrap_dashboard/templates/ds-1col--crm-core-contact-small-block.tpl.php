@@ -53,11 +53,11 @@
 			</div>
 			<div class='profile_data_container'>
 				<a href="<?php print $contact_url;?>">
-					<h4>*
+					<h4>
 					<?php //print $title; 
 								print render($variables['elements']['contact_name']);
 							?>
-^					</h4>
+					</h4>
 				</a>
 				<small><?php print $contact_type_label ; ?></small>
 			</div>
