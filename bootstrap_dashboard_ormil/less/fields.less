@@ -1,0 +1,26 @@
+@import "bootstrap_base/less/variables.less";
+
+.field-display-icon
+{
+	margin:5px;
+	cursor:help;
+}
+
+.outline-text
+{
+  /* WebKit (Safari/Chrome) Only */
+  //-webkit-text-stroke: 1px white;
+
+
+	.panel-primary > .panel-heading &
+	{
+		color: @brand-primary;
+		@text_color:white;
+		text-shadow:
+			1px  0px 0 @text_color,
+			-1px  0px 0 @text_color,
+			0px  1px 0 @text_color,
+			0px -1px 0 @text_color;
+	}
+}
+

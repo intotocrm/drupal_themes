@@ -299,15 +299,40 @@ function bootstrap_dashboard_label_formatter($element)
 	
 }
 
+
+function build_icon_field($element, $html)
+{
+		$value_string = $element['value'];
+		$label = $element['field_instance']['label'];
+		return "<div title=\"$label: $value_string\" class=\"field-display-icon\">$html</div>";
+}
+
 function bootstrap_dashboard_icon_formatter($element)
 {
-//unset ($element['field_instance']['bundle']);
-//unset ($element['field_instance']['bundle']);
+	$field_name = $element['field']['field_name'];
+	$field_type = $element['field']['type'];
 
+	$function = __FUNCTION__ . '_' . $field_name;
+	if (function_exists($function)) {
+	  return $function($element);
+	}
+
+	$function = __FUNCTION__ . '_' . $field_type;
+	if (function_exists($function)) {
+	  return $function($element);
+	}
+	
+	return bootstrap_dashboard_icon_formatter_default($element);
+}
+
+function bootstrap_dashboard_icon_formatter_default($element)
+{
+	$field_name = $element['field']['field_name'];
+	$field_type = $element['field']['type'];
 	//return '<pre>display:'. print_r($element['display'], true).' </pre>';
 	//return '<pre>field label:'. print_r($element['field_instance'], true).' </pre>^^^' .'<pre>field_inastance:'. print_r(array_keys($element['field_instance']), true).' </pre>^^^' . $element['value'] . '^^^';//<a class="mobile-tel" href="tel:' . $element['element']['number']  . '">Call</a>';
-
-	$field_type = $element['field']['type'];
+	$add = "";
+	
 	$value = $element['value'];
 	if (is_array($value)){$value = print_r($value, true);}
 	$label = $element['field_instance']['label'];
@@ -341,7 +366,7 @@ function bootstrap_dashboard_icon_formatter($element)
 		}
 	}
 
-	return $output;
+	return "$add" . $output;
 	
 }
 

@@ -1,0 +1,33 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 06/05/2015, 17:47:25
+    Author     : Roi
+*/
+.view-mode-header .profile_data_container {
+  position: absolute;
+  right: 0;
+  margin-right: 10px;
+  text-align: right;
+}
+.view-mode-header .profile_data_container .field {
+  float: none;
+}
+.view-mode-header .panel-heading {
+  position: relative;
+}
+.field-display-icon {
+  margin: 5px;
+  cursor: help;
+}
+.outline-text {
+  /* WebKit (Safari/Chrome) Only */
+
+}
+.panel-primary > .panel-heading .outline-text {
+  color: #428bca;
+  text-shadow: 1px 0px 0 #ffffff, -1px 0px 0 #ffffff, 0px 1px 0 #ffffff, 0px -1px 0 #ffffff;
+}
