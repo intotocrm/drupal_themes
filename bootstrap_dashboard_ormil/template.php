@@ -41,13 +41,13 @@ function bootstrap_dashboard_icon_formatter_field_sales_category($element)
 	if (isset($element['element']['value']))
 	{
 		$fire = "<i class=\"fa fa-fire\"></i>";
-		$cold_fire = "<i class=\"outline-text fa fa-fire \"></i>";
+		$snowflake = '<font face="Wingdings" style="font-size: larger;">T</font>';//"<i class=\"outline-text fa fa-fire \"></i>";
 		$flash = "<i class=\"fa fa-bolt\"></i>";
 		$value = $element['element']['value'];
 		
 		$ret = "";
 		switch ($value){
-			case 'cold' : $ret = $cold_fire;
+			case 'cold' : $ret = $snowflake;
 				break;
 			case 'warm' : $ret = str_repeat($fire, 1);
 				break;
