@@ -307,23 +307,38 @@ function build_icon_field($element, $html)
 		return "<div title=\"$label: $value_string\" class=\"field-display-icon\">$html</div>";
 }
 
-function bootstrap_dashboard_icon_formatter($element)
+
+function generic_function_dispatcher($function_prefix, $element)
 {
 	$field_name = $element['field']['field_name'];
 	$field_type = $element['field']['type'];
 
-	$function = __FUNCTION__ . '_' . $field_name;
+	$function = $function_prefix . '_' . $field_name;
 	if (function_exists($function)) {
 	  return $function($element);
 	}
 
-	$function = __FUNCTION__ . '_' . $field_type;
+	$function = $function_prefix . '_' . $field_type;
 	if (function_exists($function)) {
 	  return $function($element);
 	}
 	
+	$function = $function_prefix . '_default';
+	
 	return bootstrap_dashboard_icon_formatter_default($element);
+
 }
+
+function bootstrap_dashboard_icon_formatter($element)
+{
+	return generic_function_dispatcher(__FUNCTION__, $element);
+}
+
+function bootstrap_dashboard_bootstrap_formatter($element)
+{
+	return generic_function_dispatcher(__FUNCTION__, $element);
+}
+
 
 function bootstrap_dashboard_icon_formatter_default($element)
 {
@@ -386,7 +401,15 @@ function bootstrap_dashboard_icon_formatter_default($element)
 //		
 //		
 		
-function bootstrap_dashboard_bootstrap_formatter($element)
+function bootstrap_dashboard_bootstrap_formatter_image($element)
+{
+	return '<div class="round_image">
+				<img src = "' . image_style_url('thumb_tiny', $element['value']) . '" alt="' . $element['comment'] .'"/>
+			</div>';
+}
+
+
+function bootstrap_dashboard_bootstrap_formatter_default($element)
 {
 //unset ($element['field_instance']['bundle']);
 //unset ($element['field_instance']['bundle']);

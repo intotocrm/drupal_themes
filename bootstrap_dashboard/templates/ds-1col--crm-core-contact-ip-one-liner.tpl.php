@@ -46,13 +46,13 @@
 	<div class="panel panel-default one_liner">
 		<div class="panel-heading">
 			<div class='profile_data_container'>
-				<div class="frame">							
+<!--				<div class="frame">							
 					<div class="crop">
-						<?php //print render($image_field_content); 
+-->						<?php //print render($image_field_content); 
 						print render($variables['elements']['field_image'])?>
-					</div>								
+<!--					</div>								
 				</div>								
-			</div>
+-->			</div>
 			<div class='profile_data_container'>
 					<div class='contact_name'>
 						<a href="<?php print $contact_url;?>">				
