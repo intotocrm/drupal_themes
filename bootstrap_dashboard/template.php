@@ -339,14 +339,33 @@ function bootstrap_dashboard_bootstrap_formatter($element)
 	return generic_function_dispatcher(__FUNCTION__, $element);
 }
 
+function bootstrap_dashboard_caption_formatter($element)
+{
+	return generic_function_dispatcher(__FUNCTION__, $element);
+}
+
+
+function bootstrap_dashboard_caption_formatter_name($element)
+{
+	$value = $element['value'];
+	$ret = "";
+	
+	if (isset($value['given'])) $ret[] = $value['given'];
+	if (isset($value['family'])) $ret[] = $value['family'];
+	return "<span class=\"caption-format\">" . join(" " , $ret) . "</span>";
+	
+}
+
+function bootstrap_dashboard_caption_formatter_default($element)
+{
+	return "";
+}
 
 function bootstrap_dashboard_icon_formatter_default($element)
 {
-	$field_name = $element['field']['field_name'];
 	$field_type = $element['field']['type'];
 	//return '<pre>display:'. print_r($element['display'], true).' </pre>';
 	//return '<pre>field label:'. print_r($element['field_instance'], true).' </pre>^^^' .'<pre>field_inastance:'. print_r(array_keys($element['field_instance']), true).' </pre>^^^' . $element['value'] . '^^^';//<a class="mobile-tel" href="tel:' . $element['element']['number']  . '">Call</a>';
-	$add = "";
 	
 	$value = $element['value'];
 	if (is_array($value)){$value = print_r($value, true);}
@@ -381,8 +400,7 @@ function bootstrap_dashboard_icon_formatter_default($element)
 		}
 	}
 
-	return "$add" . $output;
-	
+	return $output;
 }
 
 

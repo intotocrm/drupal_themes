@@ -7321,3 +7321,6 @@ div.field-group-tabs-wrapper div.field-type-datetime fieldset {
   border: 4px solid #FFFFFF;
   border-radius: 50%;
 }
+.caption-format {
+  font-size: 170%;
+}
