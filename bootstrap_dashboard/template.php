@@ -325,7 +325,7 @@ function generic_function_dispatcher($function_prefix, $element)
 	
 	$function = $function_prefix . '_default';
 	
-	return bootstrap_dashboard_icon_formatter_default($element);
+	return $function($element);
 
 }
 

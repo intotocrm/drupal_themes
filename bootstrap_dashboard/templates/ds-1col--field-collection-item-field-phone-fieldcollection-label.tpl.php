@@ -28,8 +28,10 @@
  * @see template_process()
  */
 ?>
-<div class="<?php print $classes; ?> clearfix"<?php print $attributes; ?>>
-    <?php
-      print render($content);
+<!--<div class="<?php print $classes; ?> clearfix"<?php print $attributes; ?>>
+-->
+<?php
+      print render($content['field_number'][0]);
     ?>
-</div>
+<!--</div>
+-->
