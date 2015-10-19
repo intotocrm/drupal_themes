@@ -1,0 +1,15 @@
+.navbar-fixed-top {
+  background-color: #9c2478;
+}
+.region-navigation a,
+.navbar-nav a,
+.navbar-header a {
+  color: #ffffff !important;
+}
+.tb-megamenu-column-inner > ul > li,
+.tb-megamenu-item.open,
+.tb-megamenu-item.open > a:hover,
+.navbar-default .navbar-nav > .open > a,
+.navbar-default .navbar-nav > .open > a:hover {
+  background-color: #d74fae !important;
+}
