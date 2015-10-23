@@ -25,6 +25,7 @@ stylesheets[all][] = css/main.css
 ;;;;;;;;;;;;;;;;;;;;;
 ;scripts[] = js/vertical-menu-js
 scripts[] = js/phone_links.js
+scripts[] = js/overlay.js
 
 ;;;;;;;;;;;;;;;;;;;;;
 ;; Regions

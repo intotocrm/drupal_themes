@@ -6,6 +6,9 @@
  * and open the template in the editor.
  */
 
+ 
+ 
+
 
 
 function bootstrap_dashboard_preprocess_html(&$variables) {
@@ -14,6 +17,12 @@ function bootstrap_dashboard_preprocess_html(&$variables) {
 	$user_var = $GLOBALS['user'];
     $variables['classes_array'][] = $is_admin ? 'admin-user' : "non-admin-user";
     $variables['user_var'] = $user_var;
+
+	
+	if ( isset($_GET['overlay']) && $_GET['overlay'] == 'true' ) {
+		$vars['theme_hook_suggestions'][] = 'html__overlay';
+	}
+	
 }
 
 
@@ -141,6 +150,12 @@ function bootstrap_dashboard_preprocess_page(&$variables)
 	{
 		print "error in theme: please unset bootstrap_region_well-sidebar_first<br>";
 	}
+
+
+	if ( isset($_GET['overlay']) && $_GET['overlay'] == 'true' ) {
+		$vars['theme_hook_suggestions'][] = 'page__overlay';
+	}
+	
 }
 
 
