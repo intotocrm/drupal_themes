@@ -61,14 +61,16 @@
 					if (!$('#overlay-wrap').height()) {
 					  $('#overlay-wrap').stop(true,true).animate({ height: 200 }, 'slow');
 					}
-					$("#myModal").modal();
 			/** 
 			*   NOTE: the additional '?overlay=true' is added to trigger the new 
 			*   templates in the template.php file
 			**/
 					$('#overlay').load( href+'?overlay=true', function () {
+					alert('just finished loading ' + href);
+  					$("#myModal").modal();
 					  if (slide) $('#'+slide).click();  // cycle to correct slide
 					  // animate the height to fit the new content (within callback after load)
+
 					  $('#overlay-wrap').stop(true,true).animate({ 
 						height: $('#overlay').height()+10 
 					  }, 'fast', function() { 
