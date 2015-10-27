@@ -66,11 +66,6 @@
 				<?php print_label_if_exists('field_program', $content);?>
 				<?php print_label_if_exists('field_bedford', $content);?>
 				<?php print_label_if_exists('field_mhb', $content);?>
-				<?php 
-					foreach($disconnect_links as $link){
-						print l($link['text'], $link['path']);
-					}
-				?>
 
 			</div>
 
