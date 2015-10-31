@@ -19,8 +19,8 @@ function bootstrap_dashboard_preprocess_html(&$variables) {
     $variables['user_var'] = $user_var;
 
 	
-	if ( isset($_GET['overlay']) && $_GET['overlay'] == 'true' ) {
-		$vars['theme_hook_suggestions'][] = 'html__overlay';
+	if ( isset($_GET['overlay'])  ) { //&& $_GET['overlay'] == 'true'
+		$variables['theme_hook_suggestions'][] = 'html__overlay';
 	}
 	
 }
@@ -127,6 +127,7 @@ function bootstrap_dashboard_preprocess_html(&$variables) {
 
 function bootstrap_dashboard_preprocess_page(&$variables)
 {
+
 	//file_save_data(print_r(array_keys($variables), true), 'public://vars_file');
 	//
 	//bible: https://www.drupal.org/node/933976
@@ -151,11 +152,14 @@ function bootstrap_dashboard_preprocess_page(&$variables)
 		print "error in theme: please unset bootstrap_region_well-sidebar_first<br>";
 	}
 
-
-	if ( isset($_GET['overlay']) && $_GET['overlay'] == 'true' ) {
-		$vars['theme_hook_suggestions'][] = 'page__overlay';
+	$request_path = drupal_parse_url(request_path())['path'];
+	$args = arg();
+	$count = count($args);
+	$before_last = $count > 1 ? $args[$count - 2] : "";
+	$last = $count > 0 ? $args[$count - 1] : "";
+	if ($last == 'edit' || ($last == 'comment' && $before_last=='add')  ) { #&& $_GET['overlay'] == 'true'
+		$variables['theme_hook_suggestions'][] = 'page__overlay';
 	}
-	
 }
 
 
