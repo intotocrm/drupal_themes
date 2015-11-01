@@ -223,6 +223,15 @@ panel > h2 {
 .top-buffer {
   margin-top: 20px;
 }
+@media screen and (max-width: 900px) {
+  .homebox-column {
+    height: auto !important;
+  }
+  .homebox-column-wrapper {
+    width: 100% !important;
+    clear: both;
+  }
+}
 /*
 To change this license header, choose License Headers in Project Properties.
 To change this template file, choose Tools | Templates
