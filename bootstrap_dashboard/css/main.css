@@ -7336,3 +7336,7 @@ div.field-group-tabs-wrapper div.field-type-datetime fieldset {
 .inner_view .views-row-first td {
   border-top: none;
 }
+.hidden-form-element,
+.filter-wrapper {
+  display: none;
+}
