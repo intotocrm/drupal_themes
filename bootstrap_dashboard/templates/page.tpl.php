@@ -105,14 +105,15 @@
 				//if (!empty($primary_nav)): ?>
 				<?php //print render($primary_nav); ?>
 				<?php //endif; ?>
-				<?php if (!empty($secondary_nav)): ?>
-				<?php print render($secondary_nav); ?>
+
+				<?php if (!empty($page['user_nav'])): ?>
+				<?php print render($page['user_nav']); ?>
 				<?php endif; ?>
+				
 				<a id="infra_logo" class="logo navbar-btn pull-right" href="/" title="Home">
 							<img src="/sites/default/files/pictures/intoto-logo-blue-beta.png" alt="Home">
 				</a>
-					
-
+				
 				<?php if (!empty($page['navigation'])): ?>
 				<?php print render($page['navigation']); ?>
 				<?php endif; ?>

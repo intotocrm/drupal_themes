@@ -7301,6 +7301,9 @@ panel > pane-content {
 panel > h2 {
   border: none;
 }
+.region-user-nav {
+  float: right;
+}
 /*
 To change this license header, choose License Headers in Project Properties.
 To change this template file, choose Tools | Templates
