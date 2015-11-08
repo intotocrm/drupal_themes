@@ -95,6 +95,7 @@
 			<?php endif; ?>
 			<?php if (!empty($breadcrumb)): print $breadcrumb; endif;?>
 			<a id="main-content"></a>
+<!--			
 			<?php if ($page['contactheader']){?>
 				<?php print render($page['contactheader']); ?>
 			<?php } else { ?>
@@ -104,6 +105,7 @@
 					<h1 class="page-header"><?php print $title; ?></h1>
 				<?php endif; ?>
 			<?php } ?>
+-->			
 			<?php print render($title_suffix); ?>
 			<?php print $messages; ?>
 			<?php if (!empty($tabs)): ?>
