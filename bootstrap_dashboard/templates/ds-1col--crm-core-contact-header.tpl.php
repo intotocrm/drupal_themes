@@ -8,6 +8,7 @@
 $btn_class = $can_edit ? "btn btn-xs btn-primary" : "btn btn-xs btn-primary disabled";
 //$btn_class = "btn btn-xs btn-primary" ;//: "btn btn-xs btn-primary disabled";
 $contact = isset($vars['crm_core_contact']) ? $vars['crm_core_contact'] : NULL;
+$base_url = "/crm-core/contact/$contact_id";
 
 ?>
 <<?php print $ds_content_wrapper; print $layout_attributes; ?> class="ds-1col <?php print $classes;?> clearfix">
@@ -50,19 +51,19 @@ $contact = isset($vars['crm_core_contact']) ? $vars['crm_core_contact'] : NULL;
 			<span class="pull-left">View Details</span>
 			<span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
 			-->
-			<a href="<?php print link_check_access("/crm-core/contact/$contact_id/edit"); ;?>">
-				<button type="button" class="<?php print $btn_class;?> ">Edit</button>
-			</a>
-			<a href="<?php print link_check_access("/crm-core/contact/$contact_id/activity/add/comment");?>">
-				<button type="button" class="<?php print $btn_class;?>">Comment</button>
-			</a>
+				<a href="<?php print link_check_access("$base_url/edit"); ;?>">
+					<button type="button" class="<?php print $btn_class;?> ">Edit</button>
+				</a>
+				<a href="<?php print link_check_access("$base_url/activity/add/comment?destination=$base_url");?>">
+					<button type="button" class="<?php print $btn_class;?>">Comment</button>
+				</a>
 
-			<a href="<?php print link_check_access("/crm-core/contact/$contact_id/activity/add/email");?>">
-				<button type="button" class="<?php print $btn_class;?>">Email</button>
-			</a>
-			<a href="<?php print link_check_access("/crm-core/contact/$contact_id/activity/add/phone_call");?>">
-				<button type="button" class="<?php print $btn_class;?>">Phone</button>
-			</a>
+				<a href="<?php print link_check_access("$base_url/activity/add/email?destination=$base_url");?>">
+					<button type="button" class="<?php print $btn_class;?>">Email</button>
+				</a>
+				<a href="<?php print link_check_access("$base_url/activity/add/phone_call?destination=$base_url");?>">
+					<button type="button" class="<?php print $btn_class;?>">Phone</button>
+				</a>
 			<div class="clearfix"></div>
 		</div>		
 	</div>
