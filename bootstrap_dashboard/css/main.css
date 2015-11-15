@@ -7390,6 +7390,26 @@ div.field-group-tabs-wrapper div.field-type-datetime fieldset {
 .views-field .fa {
   padding: 3px;
 }
+.label {
+  color: #428bca;
+}
+.label-primary {
+  color: white;
+}
+a.callto span > span {
+  display: none;
+}
+a.nolink span > span {
+  display: initial;
+}
+@media screen and (max-width: 900px) {
+  a span > span {
+    display: none;
+  }
+  a > .label {
+    padding: 0px;
+  }
+}
 .inner_view .views-row-first td {
   border-top: none;
 }

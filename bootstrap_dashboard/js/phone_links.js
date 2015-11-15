@@ -21,7 +21,7 @@
 (function($) {
     Drupal.behaviors.phone_link_behvior = {
       attach: function (context, settings) {
-			if ( (/iPhone|iPod|iPad|Android|BlackBerry/).test(navigator.userAgent) !== true )
+			if ( (/iPhone|Android|BlackBerry/).test(navigator.userAgent) !== true )
 			{
 				$(".callto").removeAttr("href");
 				$(".callto").addClass("nolink");

@@ -286,7 +286,7 @@ function bootstrap_dashboard_label_formatter($element)
 	$label = $element['field_instance']['label'];
 	$label_hidden = $element['display']['label'] == 'hidden';
 	
-	$open = '<div class="label label-primary "><span>' . get_element_icon($element, []);
+	$open = '<div class="label"><span>' . get_element_icon($element, []);
 	$close = '</span></div>';
 	
 	$output = "";
@@ -306,7 +306,7 @@ function bootstrap_dashboard_label_formatter($element)
 			{
 				$output .= $label . ':&nbsp;';
 			}
-			$output .=  $value;
+			$output .=  "<span>$value</span>";
 			$output .=  $close;
 		}else
 		{
@@ -314,8 +314,13 @@ function bootstrap_dashboard_label_formatter($element)
 		}
 	}
 
+	$link = $element['link'];
+	if (isset($link['uri']))
+	{
+		$options = isset($link['options']) ? $link['options'] : [];
+		return l($output, $link['uri'], $options);
+	}
 	return $output;
-	
 }
 
 
@@ -379,10 +384,10 @@ function bootstrap_dashboard_caption_formatter($element)
 }
 
 
-
 function get_element_icon($element, $extra_classes)
 {
 	$field_type = $element['field']['type'];
+	$field_name = $element['field']['field_name'];
 	$class_list = [];
 
 	switch ($field_type){
@@ -392,10 +397,13 @@ function get_element_icon($element, $extra_classes)
 		case "email":
 			$class_list = ['fa', 'fa-envelope-o',];
 			break;
-		case "phone_number":
-			$class_list = ['fa', 'fa-phone',];
+		case "field_collection":
+			switch($field_name){
+			case "field_phone":
+				$class_list = ['fa', 'fa-phone',];
+				break;
+			}
 			break;
-			
 		default:
 			return "";
 	}

@@ -130,3 +130,39 @@ div.field-group-tabs-wrapper div.field-type-datetime fieldset
 {
 	padding: 3px;
 }
+
+.label
+{
+	color: @customer-brand-color;
+}
+
+.label-primary
+{
+	color: white;
+}
+
+
+//set of rules to show only the icon of the phone (on media!=phone which is when nolink class exists)
+a.callto span>span
+{
+	display:none;
+}
+
+a.nolink span>span
+{
+	display:initial;
+}
+
+//hide email address on small screens:
+@media screen and(max-width: 900px)
+{
+	a span>span
+	{
+		display:none;
+	}
+	a>.label
+	{
+		padding:0px;
+	}
+
+}
