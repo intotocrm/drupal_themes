@@ -286,7 +286,7 @@ function bootstrap_dashboard_label_formatter($element)
 	$label = $element['field_instance']['label'];
 	$label_hidden = $element['display']['label'] == 'hidden';
 	
-	$open = '<div class="label label-primary "><span>';
+	$open = '<div class="label label-primary "><span>' . get_element_icon($element, []);
 	$close = '</span></div>';
 	
 	$output = "";
@@ -348,6 +348,21 @@ function generic_function_dispatcher($function_prefix, $element)
 
 }
 
+function bootstrap_dashboard_icon_formatter_image($element)
+{
+	// in 'icon' format - don't show the image, just the bundle-related 
+//	return	'<div class="label label-primary ">'
+//		.		'<div class="round_image">'
+//		.			get_element_icon($element, ['badge-icon'])
+//		.		'</div>'
+//		.	'</div>'
+	return 			""
+					//.'<div class="label label-primary">'
+					.		get_element_icon($element, ['badge-icon', 'icon-container', ])
+//					."</div>"
+			;
+}
+
 function bootstrap_dashboard_icon_formatter($element)
 {
 	return generic_function_dispatcher(__FUNCTION__, $element);
@@ -364,6 +379,65 @@ function bootstrap_dashboard_caption_formatter($element)
 }
 
 
+
+function get_element_icon($element, $extra_classes)
+{
+	$field_type = $element['field']['type'];
+	$class_list = [];
+
+	switch ($field_type){
+		case "image":
+			$class_list = get_element_icon_by_bundle($element);
+			break;
+		case "email":
+			$class_list = ['fa', 'fa-envelope-o',];
+			break;
+		case "phone_number":
+			$class_list = ['fa', 'fa-phone',];
+			break;
+			
+		default:
+			return "";
+	}
+	
+	return '<i class="' . join(" ", array_merge ($class_list, $extra_classes)) . '">' .  '</i>'; 
+}
+
+function get_element_icon_by_bundle($element, $extra_classes = [])
+{
+	$icon = "";
+	
+	switch ($element['bundle']){
+		case 'ip': $icon = 'man';
+			break;
+		case 'customer': $icon = 'household';
+			break;
+		case 'child': $icon = 'child';
+			break;
+		case 'clinic': $icon = 'clinic';
+			break;
+		case 'doctor': $icon = 'doctor';
+			break;
+		case 'egg': $icon = 'egg';
+			break;
+		case 'egg_donor': $icon = 'eggdonor';
+			break;
+		case 'embryo': $icon = 'embryo';
+			break;
+		case 'journey': $icon = 'journey';
+			break;
+		case 'sperm_specimen': $icon = 'sperm';
+			break;
+		case 'surrogate': $icon = 'surrogate';
+			break;
+		case 'tammuz_staff': $icon = 'staff';
+			break;
+		default:
+			$icon = 'clinic';
+	}
+	return ["icon-$icon", ];
+}
+
 function bootstrap_dashboard_caption_formatter_name($element)
 {
 	$value = $element['value'];
@@ -371,7 +445,8 @@ function bootstrap_dashboard_caption_formatter_name($element)
 	
 	if (isset($value['given'])) $ret[] = $value['given'];
 	if (isset($value['family'])) $ret[] = $value['family'];
-	return "<span class=\"caption-format\">" . join(" " , $ret) . "</span>";
+	return get_element_icon($element, [])
+	. "<span class=\"caption-format\">" . join(" " , $ret) . "</span>";
 	
 }
 
@@ -415,7 +490,8 @@ function bootstrap_dashboard_icon_formatter_default($element)
 			$output .=  $close;
 		}else
 		{
-			$output .= "empty value: ". $open .$label . ':&nbsp;' . $value. $close;
+			$output .= get_element_icon($element, []) .
+					"empty value: ". $open .$label . ':&nbsp;' . $value. $close;
 		}
 	}
 
@@ -440,9 +516,25 @@ function bootstrap_dashboard_icon_formatter_default($element)
 		
 function bootstrap_dashboard_bootstrap_formatter_image($element)
 {
-	return '<div class="round_image">
-				<img src = "' . image_style_url('thumb_tiny', $element['value']) . '" alt="' . $element['comment'] .'"/>
-			</div>';
+	$image_tag = "";
+	if (!$element['is_default'])
+	{
+		$image_tag = '<div class="round_image image-compound"><div class="thumb-tiny-container">'
+						.'<img class="" src = "' . image_style_url('thumb_tiny', $element['value']) . '" alt="' . $element['comment'] .'"/>'
+//						.get_element_icon($element, ['badge-icon'])
+					.'</div></div>';
+	}
+	else
+	{
+		$image_tag =
+					'<div class="round_image">'
+					.	'<div class="thumb-tiny-default-container">'
+					.		get_element_icon($element, ['thumb_tiny', ])
+					.	"</div>"
+					."</div>";
+	}
+	return $image_tag;
+			
 }
 
 

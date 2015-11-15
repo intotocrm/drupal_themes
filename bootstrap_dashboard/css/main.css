@@ -7336,6 +7336,60 @@ div.field-group-tabs-wrapper div.field-type-datetime fieldset {
 .caption-format {
   font-size: 170%;
 }
+.thumb-tiny-container {
+  height: 50px;
+  width: 50px;
+}
+.image-compound img,
+.thumb-tiny-default-container {
+  /*	position: absolute;
+	left: 0px;
+	top: 0px;*/
+
+  background-color: #eeeeee;
+  border-radius: 50%;
+}
+.thumb-tiny-default-container {
+  width: 55px;
+  height: 55px;
+  overflow: hidden;
+  text-align: center;
+  color: #428bca;
+}
+.thumb-tiny-default-container .thumb_tiny {
+  position: relative;
+  bottom: -5px;
+  font-size: 48px;
+}
+.image-compound {
+  position: relative;
+}
+.thumb-tiny-container .badge-icon {
+  position: absolute;
+  background-color: white;
+  border: 2.5px #428bca solid;
+  color: #428bca;
+  overflow: hidden;
+  border-radius: 50%;
+}
+.image-compound .thumb-tiny-container .badge-icon {
+  font-size: 20px;
+  left: 40px;
+  top: 30px;
+  height: 25px;
+  width: 25px;
+}
+.icon-container {
+  font-size: 17px;
+  padding: 3px;
+  background-color: white;
+  color: #428bca;
+  overflow: hidden;
+  border-radius: 50%;
+}
+.views-field .fa {
+  padding: 3px;
+}
 .inner_view .views-row-first td {
   border-top: none;
 }

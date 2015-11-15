@@ -8,17 +8,10 @@ base theme = bootstrap
 ;;;;;;;;;;;;;;;;;;;;;
 ;; Styles
 ;;;;;;;;;;;;;;;;;;;;;
-;stylesheets[all][] = css/civicrm_gen.css
 stylesheets[all][] = css/sb-admin-2.css
-;stylesheets[all][] = css/bootstrap.css
-;stylesheets[all][] = css/bootstrap-theme.css
-;stylesheets[all][] = css/tb_megamenu.css
 stylesheets[all][] = css/main.css
-;stylesheets[all][] = css/tb-megamenues-vertical.css
-;stylesheets[all][] = css/style.css
-;stylesheets[all][] = css/civicrm_custom.css
-;stylesheets[all][] = css/bootstrap_custom.css
-;stylesheets[all][] = css/adapt_bootstrap_to_civicrm.less
+stylesheets[all][] = fonts/surrogacy_font_icon.css
+stylesheets[all][] = css/surrogacy_icons.css
 
 ;;;;;;;;;;;;;;;;;;;;;
 ;; Scripts
