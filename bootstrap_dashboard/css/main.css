@@ -7368,7 +7368,7 @@ div.field-group-tabs-wrapper div.field-type-datetime fieldset {
   position: absolute;
   background-color: white;
   border: 2.5px #428bca solid;
-  color: #428bca;
+  color: #777777;
   overflow: hidden;
   border-radius: 50%;
 }
@@ -7383,7 +7383,7 @@ div.field-group-tabs-wrapper div.field-type-datetime fieldset {
   font-size: 17px;
   padding: 3px;
   background-color: white;
-  color: #428bca;
+  color: #777777;
   overflow: hidden;
   border-radius: 50%;
 }
@@ -7391,7 +7391,7 @@ div.field-group-tabs-wrapper div.field-type-datetime fieldset {
   padding: 3px;
 }
 .label {
-  color: #428bca;
+  color: #777777;
 }
 .label-primary {
   color: white;
@@ -7409,6 +7409,10 @@ a.nolink span > span {
   a > .label {
     padding: 0px;
   }
+}
+.fa,
+.views-field a {
+  color: #777777;
 }
 .inner_view .views-row-first td {
   border-top: none;
