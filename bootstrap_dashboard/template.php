@@ -368,6 +368,22 @@ function bootstrap_dashboard_icon_formatter_image($element)
 			;
 }
 
+function bootstrap_dashboard_icon_formatter_name($element)
+{
+	// in 'icon' format - don't show the image, just the bundle-related 
+//	return	'<div class="label label-primary ">'
+//		.		'<div class="round_image">'
+//		.			get_element_icon($element, ['badge-icon'])
+//		.		'</div>'
+//		.	'</div>'
+	return 			""
+					//.'<div class="label label-primary">'
+					.		get_element_icon($element, ['badge-icon', 'icon-container', ])
+//					."</div>"
+			;
+}
+
+
 function bootstrap_dashboard_icon_formatter($element)
 {
 	return generic_function_dispatcher(__FUNCTION__, $element);
@@ -391,9 +407,6 @@ function get_element_icon($element, $extra_classes)
 	$class_list = [];
 
 	switch ($field_type){
-		case "image":
-			$class_list = get_element_icon_by_bundle($element);
-			break;
 		case "email":
 			$class_list = ['fa', 'fa-envelope-o',];
 			break;
@@ -405,7 +418,7 @@ function get_element_icon($element, $extra_classes)
 			}
 			break;
 		default:
-			return "";
+			$class_list = get_element_icon_by_bundle($element);
 	}
 	
 	return '<i class="' . join(" ", array_merge ($class_list, $extra_classes)) . '">' .  '</i>'; 

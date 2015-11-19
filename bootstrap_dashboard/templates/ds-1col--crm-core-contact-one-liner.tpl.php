@@ -48,8 +48,12 @@
 			<div class='profile_data_container'>
 <!--				<div class="frame">							
 					<div class="crop">
--->						<?php //print render($image_field_content); 
-						print render($variables['elements']['field_image'])?>
+					
+-->						<a href="<?php print $contact_url;?>">				
+							<?php //print render($image_field_content); 
+								print render($variables['elements']['field_image'])
+							?>
+						</a>
 <!--					</div>								
 				</div>								
 -->			</div>

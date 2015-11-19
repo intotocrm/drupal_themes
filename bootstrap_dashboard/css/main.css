@@ -197,8 +197,13 @@ and open the template in the editor.
     }
 }
 */
-.panel-primary > .panel-heading > a {
-  color: inherit;
+.panel-primary > .panel-heading > a,
+.panel-primary > .panel-heading > .profile_data_container span {
+  color: white;
+}
+.panel-primary .thumb-tiny-default-container,
+.panel-primary .thumb-tiny-container {
+  margin: auto;
 }
 /*
 To change this license header, choose License Headers in Project Properties.
@@ -215,10 +220,6 @@ panel > h2 {
 }
 .panel-heading h2 {
   font-size: 24px;
-}
-.panel-heading img {
-  border: 4px solid #FFFFFF;
-  border-radius: 50%;
 }
 .top-buffer {
   margin-top: 20px;
@@ -7330,7 +7331,6 @@ div.field-group-tabs-wrapper div.field-type-datetime fieldset {
   text-decoration: none;
 }
 .round_image img {
-  border: 4px solid #FFFFFF;
   border-radius: 50%;
 }
 .caption-format {

@@ -36,12 +36,8 @@ $base_url = "/crm-core/contact/$contact_id";
 			</div>
 			<a href="<?php print "/crm-core/contact/$contact_id";?>">
 			<!--<i class="fa fa-comments fa-5x"></i>-->
-				<h2><?php print $caption_rendered; ?></h2>
-				<div class="frame">							
-					<div class="crop">
-						<?php print $image_rendered; ?>
-					</div>								
-				</div>								
+				<?php print $caption_rendered; ?>
+				<?php print $image_rendered;   ?>
 				<small><?php print $contact_type_label ; ?></small>
 			</a>
 			<div class="clearfix"></div>
