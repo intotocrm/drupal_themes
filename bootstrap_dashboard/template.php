@@ -8,7 +8,22 @@
 
  
  
-
+ function bootstrap_dashboard_field($variables)
+ {
+	 
+	 if (isset($variables['internal']) && $variables['internal'] ||
+			 isset($variables['element']['#entity_type']) && $variables['element']['#entity_type'] == 'field_collection_item')  //field colelction items should be seen as a whole field, subfields shouldn't have field wraps
+	 {
+//		 return "<pre>" . print_r($variables, true) . "</pre>";
+		 $out = [];
+		 foreach($variables['items'] as $item)
+		 {
+			 $out[] = render($item);
+		 }
+		 return join (" ", $out);
+	 }
+	 return theme_field($variables);
+ }
 
 
 function bootstrap_dashboard_preprocess_html(&$variables) {
@@ -417,8 +432,13 @@ function get_element_icon($element, $extra_classes)
 				break;
 			}
 			break;
+		case "image":
+		case "name":
+			$class_list = get_element_icon_by_bundle($element);				
+			break;
 		default:
-			$class_list = get_element_icon_by_bundle($element);
+			return "";
+			
 	}
 	
 	return '<i class="' . join(" ", array_merge ($class_list, $extra_classes)) . '">' .  '</i>'; 
@@ -561,6 +581,7 @@ function bootstrap_dashboard_bootstrap_formatter_image($element)
 
 function bootstrap_dashboard_bootstrap_formatter_default($element)
 {
+
 //unset ($element['field_instance']['bundle']);
 //unset ($element['field_instance']['bundle']);
 
@@ -573,7 +594,7 @@ function bootstrap_dashboard_bootstrap_formatter_default($element)
 	$label = $element['label'];
 	$label_hidden = $element['display']['label'] == 'hidden';
 	$comment = trim($element['comment']);
-	
+	$is_internal = $element['entity_type'] == 'field_collection_item'; // entity type itself is presented as a field, so all the field decoration is already there
 	$open = "";//'<div class="list-group-item">';
 	$close = "";'</div>';
 	
@@ -590,18 +611,24 @@ function bootstrap_dashboard_bootstrap_formatter_default($element)
 		if (strlen(trim($value)) > 0)
 		{
 			$output .= $open;
-//				$output .= "<span class=\"header\">
-//								<strong class=\"primary-font\">$label</strong>
-//							</span>";
-			$output .= "<span>" . ((empty($label) || (strlen(trim($label)) == 0) || $label_hidden) ? "&nbsp;" : $label ) . "</span>";
-			$output .= "<div class=\"pull-right\">";
+			if(!$is_internal)
+			{
+	//				$output .= "<span class=\"header\">
+	//								<strong class=\"primary-font\">$label</strong>
+	//							</span>";
+				$output .= "<span>" . ((empty($label) || (strlen(trim($label)) == 0) || $label_hidden) ? "&nbsp;" : $label ) . "</span>";
+				$output .= "<div class=\"pull-right\">";
+			}
 			$output .=  "<strong class=\"primary-font\">$value</strong>";
 			if (strlen($comment) > 0){
 				$output .= "<span class='text-muted small'> (" . $comment . ")</span>";
 			}
-			//$output .=  "<p>$value</p>";
-			$output .= "</div>";
-			$output .=  $close;
+			if(!$is_internal)
+			{
+				//$output .=  "<p>$value</p>";
+				$output .= "</div>";
+				$output .=  $close;
+			}
 		}else
 		{
 			$output .= "empty value: ". $open .$label . ':&nbsp;' . $value. $close;
