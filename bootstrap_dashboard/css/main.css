@@ -7333,7 +7333,7 @@ div.field-group-tabs-wrapper div.field-type-datetime fieldset {
 .round_image img {
   border-radius: 50%;
 }
-.caption-format {
+.view-mode-header .caption-format {
   font-size: 170%;
 }
 .thumb-tiny-container {

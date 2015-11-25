@@ -10,9 +10,9 @@
  
  function bootstrap_dashboard_field($variables)
  {
-	 
 	 if (isset($variables['internal']) && $variables['internal'] ||
-			 isset($variables['element']['#entity_type']) && $variables['element']['#entity_type'] == 'field_collection_item')  //field colelction items should be seen as a whole field, subfields shouldn't have field wraps
+			 isset($variables['element']['#entity_type']) && in_array ($variables['element']['#entity_type'], ['field_collection_item', 'taxonomy_term'])
+		) //field colelction items should be seen as a whole field, subfields shouldn't have field wraps
 	 {
 //		 return "<pre>" . print_r($variables, true) . "</pre>";
 		 $out = [];
@@ -20,7 +20,12 @@
 		 {
 			 $out[] = render($item);
 		 }
-		 return join (" ", $out);
+		 return join(" ", $out);
+	 }
+	 if (isset($variables['element']['#formatter']) && in_array($variables['element']['#formatter'] , ['intoto_caption_formatter', 'intoto_label_formatter', 'intoto_icon_formatter',]))
+	 {
+		$variables['element']["#label_display"] = 'hidden';
+		$variables['label_hidden'] = true;
 	 }
 	 return theme_field($variables);
  }
@@ -297,8 +302,8 @@ function bootstrap_dashboard_label_formatter($element)
 	//return '<pre>field label:'. print_r($element['field_instance'], true).' </pre>^^^' .'<pre>field_inastance:'. print_r(array_keys($element['field_instance']), true).' </pre>^^^' . $element['value'] . '^^^';//<a class="mobile-tel" href="tel:' . $element['element']['number']  . '">Call</a>';
 
 	$field_type = $element['field']['type'];
-	$value = $element['value'];
-	$label = $element['field_instance']['label'];
+	$value = render($element['value']);
+	$label = render($element['label']); //$element['field_instance']['label'];
 	$label_hidden = $element['display']['label'] == 'hidden';
 	
 	$open = '<div class="label"><span>' . get_element_icon($element, []);
@@ -642,20 +647,21 @@ function bootstrap_dashboard_bootstrap_formatter_default($element)
 
 
 
-function bootstrap_dashboard_preprocess_field(&$variables, $hook)
-{
-	if(isset($variables['element']['#formatter']) && 
-				(
-					$variables['element']['#formatter'] == 'intoto_label_formatter' ||
-					$variables['element']['#formatter'] == 'intoto_bootstrap_formatter' 
-				)
-			)
-	{
-//		print "<pre>".print_r($variables['element']['#formatter'], true )."</pre>";
-//		print "<pre>".print_r($variables['label_hidden'], true )."</pre>";
-		$variables['label_hidden'] = true;
-	}
-}
+//function bootstrap_dashboard_preprocess_field(&$variables, $hook)
+//{
+//	if(isset($variables['element']['#formatter']) && 
+//				(
+//					$variables['element']['#formatter'] == 'intoto_label_formatter' ||
+//					$variables['element']['#formatter'] == 'intoto_bootstrap_formatter' 
+//				)
+//			)
+//	{
+////		print "<pre>".print_r($variables['element']['#formatter'], true )."</pre>";
+////		print "<pre>".print_r($variables['label_hidden'], true )."</pre>";
+////		$variables['label_hidden_internal'] = $variables['label_hidden'];
+////		$variables['label_hidden'] = true;
+//	}
+//}
 
 //THEMENAME_field__body__article
 function KEEP_bootstrap_dashboard_field($variables)
