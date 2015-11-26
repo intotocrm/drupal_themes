@@ -7333,7 +7333,7 @@ div.field-group-tabs-wrapper div.field-type-datetime fieldset {
 .round_image img {
   border-radius: 50%;
 }
-.caption-format {
+.view-mode-header .caption-format {
   font-size: 170%;
 }
 .thumb-tiny-container {
@@ -7413,6 +7413,15 @@ a.nolink span > span {
 .view-search-contacts .fa,
 .views-field a {
   color: #777777;
+}
+.details-grid > span,
+.details-grid > div {
+  margin-right: 12px;
+}
+.grid-field {
+  margin-left: 2px;
+  padding-left: 2px;
+  border-left: 1px solid #777777;
 }
 .inner_view .views-row-first td {
   border-top: none;
