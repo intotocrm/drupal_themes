@@ -7430,6 +7430,9 @@ a.nolink span > span {
 .filter-wrapper {
   display: none;
 }
+#flexiform-quick-houshold > DIV > .required-fields {
+  clear: both;
+}
 .column-field-group {
   float: left;
   margin-right: 10px;
@@ -7445,3 +7448,57 @@ fieldset.column-field-group:last-of-type
 	margin-right:0px; //align to right edge
 }
 */
+.field-name-field-phone .form-group {
+  float: left;
+}
+.field-name-field-phone .form-group label {
+  display: none;
+}
+.field-name-field-phone .field-type-phone-number {
+  max-width: 350px;
+}
+.form-phone-number {
+  /* , .field-name-field-phone tbody label*/
+  /*uncomment this in order to hide also the 'number' label*/
+
+  /*limit country code width*/
+
+  /*limit number width*/
+
+  /*limit extention width*/
+
+}
+.form-phone-number .form-item {
+  float: left;
+}
+.form-phone-number .form-item label {
+  display: none;
+}
+.form-phone-number .form-item:nth-child(1) {
+  max-width: 20%;
+}
+.form-phone-number .form-item:nth-child(1) .chosen-container {
+  padding-left: 0px;
+  padding-right: 0px;
+  max-width: 100%;
+}
+.form-phone-number .form-item:nth-child(1) .chosen-single {
+  border: none;
+  background: none;
+  box-shadow: none;
+}
+.form-phone-number .form-item:nth-child(1) .chosen-drop {
+  width: 300px;
+}
+.form-phone-number .form-item:nth-child(2) {
+  max-width: 70%;
+}
+.form-phone-number .form-item:nth-child(3) {
+  max-width: 10%;
+}
+.tabledrag-toggle-weight {
+  display: none;
+}
+.field-add-more-submit {
+  float: right;
+}

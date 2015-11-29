@@ -4,6 +4,11 @@
 	display:none;
 }
 
+#flexiform-quick-houshold > DIV > .required-fields
+{
+	clear:both;
+}
+
 
 
 .column-field-group
@@ -22,3 +27,83 @@ fieldset.column-field-group:last-of-type
 	margin-right:0px; //align to right edge
 }
 */
+
+
+
+
+.field-name-field-phone 
+{
+	.form-group
+	{
+		float:left;
+		label
+		{
+			display:none;
+		}
+	}
+	.field-type-phone-number
+	{
+		max-width:350px;
+	}
+}
+
+.form-phone-number
+{
+	/* , .field-name-field-phone tbody label*/  /*uncomment this in order to hide also the 'number' label*/
+	
+	.form-item
+	{
+		float:left;
+		label
+		{
+			display:none;
+		}
+	}
+	
+	
+	/*limit country code width*/
+	.form-item:nth-child(1)
+	{
+		max-width:20%;
+		.chosen-container
+		{
+			padding-left:0px;
+			padding-right:0px;
+			max-width:100%
+		}
+		.chosen-single
+		{
+			border:none;
+			background:none;
+			box-shadow:none;
+		}
+		.chosen-drop
+		{
+			width:300px;
+		}
+	}	
+	/*limit number width*/
+	.form-item:nth-child(2) 
+	{
+		max-width:70%;
+	}	
+	/*limit extention width*/
+	.form-item:nth-child(3) 
+	{
+		max-width:10%;
+	}
+	
+}
+
+
+//this is "Show row weights" link
+.tabledrag-toggle-weight   
+{
+	display:none;
+}
+
+//'Add Another Item' button is ugly when on the left
+.field-add-more-submit
+{
+	float:right;
+}

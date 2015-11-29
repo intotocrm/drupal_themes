@@ -177,7 +177,16 @@ function bootstrap_dashboard_preprocess_page(&$variables)
 	$count = count($args);
 	$before_last = $count > 1 ? $args[$count - 2] : "";
 	$last = $count > 0 ? $args[$count - 1] : "";
-	if ($last == 'edit' || ($last == 'comment' && $before_last=='add')  ) { #&& $_GET['overlay'] == 'true'
+	if (
+			$last == 'edit' || 
+			(
+					$before_last=='add' || $before_last=='edit'
+			)&& 					
+			(
+				($last == 'comment') || ($last == 'household') 
+			)
+		)
+	{ #&& $_GET['overlay'] == 'true'
 		$variables['theme_hook_suggestions'][] = 'page__overlay';
 	}
 }
@@ -723,4 +732,61 @@ function KEEP_bootstrap_dashboard_field($variables)
 
 		}
 		return $output;	}
+}
+
+
+function bootstrap_dashboard_field_multiple_value_form($variables) {
+ return theme_field_multiple_value_form($variables); //#todo: override this function (instead of calling it) in order:
+	//A remove the 'show weights'
+	//B rename button to "add phone" "add child" etc.	
+}
+
+
+//function bootstrap_dashboard_date_popup($vars) {
+//  $element = $vars['element'];
+//  $attributes = !empty($element['#wrapper_attributes']) ? $element['#wrapper_attributes'] : array('class' => array());
+//  $attributes['class'][] = 'container-inline-date';
+//  // If there is no description, the floating date elements need some extra padding below them.
+//  $wrapper_attributes = array('class' => array('date-padding'));
+//  if (empty($element['date']['#description'])) {
+//    $wrapper_attributes['class'][] = 'clearfix';
+//  }
+//  // Add an wrapper to mimic the way a single value field works, for ease in using #states.
+//  if (isset($element['#children'])) {
+//    $element['#children'] = '<div id="' . $element['#id'] . '" ' . drupal_attributes($wrapper_attributes) .'>' . $element['#children'] . '</div>';
+//  }
+//  return '<div ' . drupal_attributes($attributes) .'>' . theme('form_element', $element) . '</div>';
+//}
+
+
+function fieldset_into_form_element($variables) //based on http://drupal.stackexchange.com/questions/52255/remove-fieldset-from-date-field
+{
+    $element = $variables['element'];
+//    $field = field_info_field($element['#field_name']);
+//    $instance = field_info_instance($element['#entity_type'], $element['#field_name'], $element['#bundle']);
+
+    // Group start/end items together in fieldset.
+    $fieldset = array(
+            '#title' => t($element['#title']) . ' ' . (isset($element['#delta'])  && $element['#delta'] > 0 ? intval($element['#delta'] + 1) : ''),
+            '#value' => '',
+            '#description' => !empty($element['#fieldset_description']) ? $element['#fieldset_description'] : '',
+            '#attributes' => array(),
+            '#children' => $element['#children'],
+    );
+
+    // Fix required marker.
+    if ($element['#required']) {
+        $fieldset['#title'] .= " " . theme('form_required_marker');
+    }
+    return theme('form_element', array('element' => $fieldset));
+}
+
+function bootstrap_dashboard_date_combo($variables)
+{
+	return fieldset_into_form_element($variables);
+}
+
+function bootstrap_dashboard_fieldset($variables)
+{
+	return fieldset_into_form_element($variables);
 }
