@@ -661,7 +661,7 @@ mso-fareast-font-family:"Times New Roman";color:#222222'><o:p></o:p></span></p>
    style='width:66pt;height:58.5pt;visibility:visible;mso-wrap-style:square'>
    
   </v:shape><![endif]--><![if !vml]><img width=88 height=78
-  src="<?php print url("/sites/default/files/pictures/orm_logo_green.png",['absolute'=>TRUE, ]);?>" v:shapes="Picture_x0020_1"><![endif]></span><span
+  src="<?php print url("/sites/all/themes/intoto/bootstrap_dashboard_ormil/Oregon_Reproductive_Medicine_logo.png",['absolute'=>TRUE, ]);?>" v:shapes="Picture_x0020_1"><![endif]></span><span
   style='font-size:9.5pt;font-family:"Arial","sans-serif";mso-fareast-font-family:
   "Times New Roman";color:#222222'><o:p></o:p></span></p>
   </td>
