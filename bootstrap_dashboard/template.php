@@ -656,21 +656,21 @@ function bootstrap_dashboard_bootstrap_formatter_default($element)
 
 
 
-//function bootstrap_dashboard_preprocess_field(&$variables, $hook)
-//{
-//	if(isset($variables['element']['#formatter']) && 
-//				(
-//					$variables['element']['#formatter'] == 'intoto_label_formatter' ||
-//					$variables['element']['#formatter'] == 'intoto_bootstrap_formatter' 
-//				)
-//			)
-//	{
-////		print "<pre>".print_r($variables['element']['#formatter'], true )."</pre>";
-////		print "<pre>".print_r($variables['label_hidden'], true )."</pre>";
-////		$variables['label_hidden_internal'] = $variables['label_hidden'];
-////		$variables['label_hidden'] = true;
-//	}
-//}
+function bootstrap_dashboard_preprocess_field(&$variables, $hook)
+{
+	if(isset($variables['element']['#formatter']) && 
+				(
+					$variables['element']['#formatter'] == 'intoto_label_formatter' ||
+					$variables['element']['#formatter'] == 'intoto_bootstrap_formatter' 
+				)
+			)
+	{
+//		print "<pre>".print_r($variables['element']['#formatter'], true )."</pre>";
+//		print "<pre>".print_r($variables['label_hidden'], true )."</pre>";
+		$variables['label_hidden_internal'] = $variables['label_hidden'];
+		$variables['label_hidden'] = true;
+	}
+}
 
 //THEMENAME_field__body__article
 function KEEP_bootstrap_dashboard_field($variables)
